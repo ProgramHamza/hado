@@ -26,6 +26,9 @@ export type Member = {
   initials: string;
   /** Optional photo in /public, e.g. "/team/marek.jpg". Falls back to initials. */
   photo?: string;
+  /** CSS object-position to keep the face in frame, e.g. "55% 45%". */
+  photoPosition?: string;
+  photoAlt?: string;
   bio: string;
   highlights: string[];
 };
@@ -35,6 +38,9 @@ export const TEAM: Member[] = [
     name: "Marek Hromada",
     role: "Lead engineer and developer",
     initials: "MH",
+    photo: "/team/marek.jpg",
+    photoPosition: "55% 52%",
+    photoAlt: "Marek Hromada at MILSET ESE 2026 with his bionic hand project",
     bio: "Builds the Hado hardware, the signal processing and the touch-detection algorithms.",
     highlights: [
       "Researcher at the National Centre of Robotics (COCOHRIP), building computer vision for robot arms in Python and ROS2",
@@ -48,6 +54,9 @@ export const TEAM: Member[] = [
     name: "Adam Daniel Donoval",
     role: "Co-founder, sales",
     initials: "AD",
+    photo: "/team/adam.jpg",
+    photoPosition: "46% 28%",
+    photoAlt: "Adam Daniel Donoval",
     bio: "Co-founder and managing director of Cassava s. r. o. Leads customer discovery with cold stores, logistics sites and machine builders, partnerships and investor conversations.",
     highlights: [],
   },
@@ -77,6 +86,13 @@ export const LATER_VARIANT = {
   when: "Later",
   text: "A ring sends the signal and the back of your hand becomes the touchpad, to control a smartwatch, smart glasses or earbuds without touching them. This is the original SkinTrack idea and a later consumer variant, not our first product.",
   note: "Rings stay out of industry: near rotating machinery they are a degloving hazard and usually banned, so the industrial emitter lives in the glove.",
+} as const;
+
+export const PROTOTYPE_PHOTO = {
+  src: "/prototype/proof-of-concept.jpg",
+  alt: "Hado proof of concept worn on the hand: an AD8302 gain and phase receiver board on the back of the hand, wired to sensor electrodes on a wristband",
+  caption:
+    "The lab proof of concept: a gain and phase receiver on the back of the hand, wired to sensor electrodes on a wristband. It is the original on-skin setup we use to test the principle, before the glove insert and the sealed panel.",
 } as const;
 
 export const BENEFITS = [

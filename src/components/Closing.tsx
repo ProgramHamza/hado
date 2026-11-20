@@ -1,4 +1,4 @@
-import { FACTS, FAQ, TEST_CRITERIA } from "../content";
+import { FACTS, FAQ, PROTOTYPE_PHOTO, TEST_CRITERIA } from "../content";
 
 const SPEC = [
   [`${FACTS.touchZones}`, "Touch zones today"],
@@ -22,10 +22,21 @@ export function Status() {
           <h2 className="display m-0 mb-6.5 max-w-[11em] text-[clamp(40px,6vw,84px)] leading-[.96] text-white">
             A lab proof of concept, honestly.
           </h2>
-          <p className="mb-4 max-w-[36em] text-mut-dark">
-            Today the proof of concept tells three touch zones apart after a five-minute calibration, on a single gain
-            and phase receiver. Before we build a product, we put it through a test that can say no.
-          </p>
+          <div className="grid items-start gap-10 md:grid-cols-[1fr_minmax(0,360px)] md:gap-16">
+            <p className="m-0 max-w-[36em] text-mut-dark">
+              Today the proof of concept tells three touch zones apart after a five-minute calibration, on a single gain
+              and phase receiver. Before we build a product, we put it through a test that can say no.
+            </p>
+            <figure className="m-0">
+              <img
+                src={PROTOTYPE_PHOTO.src}
+                alt={PROTOTYPE_PHOTO.alt}
+                loading="lazy"
+                className="aspect-[4/5] w-full rounded-[22px] object-cover object-[50%_62%]"
+              />
+              <figcaption className="mt-3 text-[13.5px] text-mut-dark">{PROTOTYPE_PHOTO.caption}</figcaption>
+            </figure>
+          </div>
           <div className="mt-14 grid grid-cols-2 border-t border-white/25 md:grid-cols-5">
             {SPEC.map(([value, name]) => (
               <div key={name} className="pt-4.5 pr-4">
