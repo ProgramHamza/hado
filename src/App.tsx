@@ -1,7 +1,7 @@
-import { Faq, Footer, Status } from "./components/Closing";
-import { How, NameMeaning, Variants } from "./components/Explain";
+import { Faq, Footer, Pilot, Status } from "./components/Closing";
+import { Benefits, How, NameMeaning, Sites } from "./components/Explain";
 import { Hero, Nav } from "./components/Hero";
-import { Cost, Savings, TryIt } from "./components/Interactive";
+import { Pricing, Savings, TryIt } from "./components/Interactive";
 import { Intro } from "./components/Intro";
 import { SignalStory } from "./components/SignalStory";
 import { Team } from "./components/Team";
@@ -22,11 +22,13 @@ export default function App() {
           <SignalStory reduced={reduced} />
           <How />
           <NameMeaning />
-          <Variants />
+          <Sites />
+          <Benefits />
           <TryIt />
-          <Cost />
           <Savings />
+          <Pricing />
           <Status />
+          <Pilot />
           <Team />
           <Faq />
           <Footer />

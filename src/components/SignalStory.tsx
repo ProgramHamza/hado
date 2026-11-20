@@ -5,18 +5,24 @@ const INK = "13,27,46";
 const SIG = "255,90,31";
 
 const CAPTIONS = [
-  { h: "The ring sends.", p: "An 80 MHz signal leaves the fingertip and spreads across the skin of the other hand." },
   {
-    h: "The sensors compare.",
-    p: "Each sensor sees the signal slightly later and weaker. Phase and magnitude give the position. Move your pointer over the arm to touch it yourself.",
+    h: "The glove sends.",
+    p: "An insert sewn into the work glove emits a coded signal in a licence-free radio band.",
   },
   {
-    h: "Gloves and water do not matter.",
-    p: "In the wet, a glass screen starts inventing touches. A radio signal does not care what the fingertip is wearing.",
+    h: "The panel compares.",
+    p: "Each sensor at the edge of the sealed panel sees the signal slightly later and weaker. Phase and magnitude give the position. Move your pointer over the panel to press it yourself.",
   },
-  { h: "Any surface becomes a pad.", p: "Position over radio works on a flat panel too. Move your pointer to write." },
+  {
+    h: "Frost and water do not matter.",
+    p: "In the cold and wet, a glass screen fogs and invents touches. The coded signal does not care how thick the glove is.",
+  },
+  {
+    h: "Every press has a name.",
+    p: "Each glove carries its own code, so the panel logs who pressed what. Move your pointer to press.",
+  },
 ];
-const STEPS = ["Send", "Compare", "Wet", "Write"];
+const STEPS = ["Send", "Compare", "Cold & wet", "Identify"];
 
 type Ctx = CanvasRenderingContext2D;
 type Pt = [number, number];
@@ -163,13 +169,13 @@ export function SignalStory({ reduced }: { reduced: boolean }) {
         }
       }
 
-      // Arm, ring and sensor bracelet.
+      // Sealed panel, gloved finger with its insert, and the sensor strip.
       c.save();
       c.translate(ox, oy);
       c.scale(sc, sc);
       c.globalAlpha = aArm;
       const L = 2000;
-      roundRect(c, -400, -70, 820, 140, 70);
+      roundRect(c, -400, -70, 820, 140, 18);
       c.setLineDash([L, L]);
       c.lineDashOffset = L * (1 - ss(0, 0.1, p));
       c.strokeStyle = `rgb(${INK})`;
@@ -179,7 +185,7 @@ export function SignalStory({ reduced }: { reduced: boolean }) {
 
       const wv = ss(0.12, 0.2, p);
       c.save();
-      roundRect(c, -400, -70, 820, 140, 70);
+      roundRect(c, -400, -70, 820, 140, 18);
       c.clip();
       for (let i = 0; i < 7; i++) {
         const r = (p * 900 + i * 70) % 490;
@@ -230,18 +236,17 @@ export function SignalStory({ reduced }: { reduced: boolean }) {
       c.moveTo(fx, fy);
       c.lineTo(TX, TY);
       c.stroke();
+      // Glove insert: a small tag on the back of the gloved finger.
       const rx = lerp(fx, TX, 0.42);
       const ry = lerp(fy, TY, 0.42);
-      c.strokeStyle = `rgba(${SIG},${fa})`;
-      c.lineWidth = 8;
-      c.beginPath();
-      c.arc(rx, ry, 19 + glove * 18, 0, Math.PI * 2);
-      c.stroke();
+      c.fillStyle = `rgba(${SIG},${fa})`;
+      roundRect(c, rx - 16 - glove * 6, ry - 11, 32 + glove * 12, 22, 6);
+      c.fill();
       c.fillStyle = `rgba(${SIG},${fa})`;
       c.beginPath();
       c.arc(TX, TY, 8, 0, Math.PI * 2);
       c.fill();
-      label(c, glove > 0.5 ? "glove" : "ring", rx + 34, ry + 4, fa);
+      label(c, glove > 0.5 ? "insulated glove" : "glove insert", rx + 34, ry + 4, fa);
       label(c, "sensors", -318, -96, bz);
 
       const so = ss(0.24, 0.3, p) * (1 - ss(0.48, 0.54, p));
@@ -300,7 +305,7 @@ export function SignalStory({ reduced }: { reduced: boolean }) {
         } else {
           trail(c, ink, a4);
         }
-        label(c, "Hado pad", x0, y0 - 12, a4);
+        label(c, "Hado panel · press log: operator 07", x0, y0 - 12, a4);
       }
 
       c.fillStyle = `rgb(${SIG})`;

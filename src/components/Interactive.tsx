@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { PRICES } from "../content";
-import { useInView } from "../lib/motion";
+import { FACTS, PRICING } from "../content";
 
 const section = "py-[clamp(90px,13vw,180px)]";
 const h2 = "display m-0 mb-6.5 max-w-[11em] text-[clamp(40px,6vw,84px)] leading-[.96]";
@@ -36,7 +35,7 @@ export function TryIt() {
     setScore((s) => ({
       n: s.n + 1,
       ok: s.ok + (reg === i ? 1 : 0),
-      last: `You pressed ${KEYS[i]}, registered ${KEYS[reg]}.`,
+      last: `You pressed ${KEYS[i]}, registered ${KEYS[reg]}${tech === "hado" ? " by operator 07" : ""}.`,
     }));
   };
 
@@ -44,15 +43,15 @@ export function TryIt() {
     <section id="try" className={section}>
       <div className="wrap grid items-start gap-10 md:grid-cols-2 md:gap-16">
         <div>
-          <h2 className={h2}>Try it with gloves on.</h2>
+          <h2 className={h2}>Try it in freezer gloves.</h2>
           <p className="mb-4 text-mut">
-            Three buttons, like our proof of concept. Press them with each technology, then turn gloves and water on or off.
+            Three buttons, like our proof of concept. Press them with each technology, then turn thick gloves and condensation on or off.
           </p>
           <div className="mt-2 mb-4 inline-flex overflow-hidden rounded-full border border-ink" role="group" aria-label="Technology">
             {(
               [
                 ["hado", "Hado"],
-                ["glass", "Glass screen"],
+                ["glass", "Glove-mode touchscreen"],
               ] as const
             ).map(([v, text]) => (
               <button
@@ -68,13 +67,13 @@ export function TryIt() {
           </div>
           <label className="mb-3.5 block text-[15px]">
             <input type="checkbox" checked={wet} onChange={(e) => setWet(e.target.checked)} className="mr-2" />
-            Gloves and water
+            Thick gloves and condensation
           </label>
           <p className="mb-4 text-[14.5px] text-mut" aria-live="polite">
             {score.n ? `${score.last} Correct ${score.ok} of ${score.n}.` : "Press a button."}
           </p>
           <p className="text-[14.5px] text-mut">
-            The glass screen's errors are simulated to show the contrast. They are not test data.
+            The touchscreen's errors are simulated to show the contrast. They are not test data; our head-to-head test against a glove-mode touchscreen is planned for Q1 2027.
           </p>
         </div>
         <div className={`grid grid-cols-3 gap-3.5 rounded-[28px] border border-line bg-pan p-7 ${wet ? "pad-wet" : ""}`}>
@@ -102,40 +101,27 @@ export function TryIt() {
   );
 }
 
-export function Cost() {
-  const { ref, inView } = useInView<HTMLDivElement>(0.3);
+export function Pricing() {
   return (
-    <section id="cost" className={section}>
+    <section id="pricing" className={section}>
       <div className="wrap">
-        <h2 className={h2}>About half the price of rugged glass.</h2>
+        <h2 className={h2}>A panel, glove inserts and a site licence.</h2>
         <p className="mb-4 max-w-[34em] text-mut">
-          Industrial displays cost hundreds to thousands because glass must survive the factory floor. Hado skips the
-          glass. Retail target is 400 to 500 euros.
+          Target prices, to be confirmed in paid pilots. The inserts are replaced together with the work gloves, and the
+          site licence covers operator identification and press logs.
         </p>
-        <div ref={ref} className="mt-9 border-t border-ink">
-          {PRICES.map((row, i) => (
-            <div
-              key={row.label}
-              className="grid grid-cols-1 items-center gap-2 border-b border-line py-5 text-[15.5px] md:grid-cols-[230px_1fr_170px] md:gap-6"
-            >
-              <span className={row.highlight ? "font-semibold" : ""}>{row.label}</span>
-              <div className="relative h-1.5 overflow-hidden rounded-[3px] bg-ink/7">
-                <div
-                  className={`absolute inset-y-0 origin-left rounded-[3px] transition-transform duration-[1300ms] ease-[cubic-bezier(.2,.8,.2,1)] ${row.highlight ? "bg-sig" : "bg-ink"}`}
-                  style={{
-                    left: `${row.from * 100}%`,
-                    right: `${(1 - row.to) * 100}%`,
-                    transform: `scaleX(${inView ? 1 : 0})`,
-                    transitionDelay: `${i * 120}ms`,
-                  }}
-                />
-              </div>
-              <span className="font-semibold tabular-nums md:text-right">{row.value}</span>
+        <div className="mt-12 grid border-t border-ink md:grid-cols-3">
+          {PRICING.map((p, i) => (
+            <div key={p.name} className={`border-b border-line py-6 md:border-b-0 md:pr-8 ${i > 0 ? "md:border-l md:pl-8" : ""}`}>
+              <div className="text-[14.5px] font-semibold text-sig">{p.name}</div>
+              <div className="display mt-2 mb-3 text-[clamp(36px,4.4vw,60px)] leading-none tabular-nums">{p.price}</div>
+              <p className="m-0 text-[15px] text-mut">{p.note}</p>
             </div>
           ))}
         </div>
-        <p className="mt-3.5 text-[14.5px] text-mut">
-          Bars show relative ranges on a shared scale up to $3,000. Currencies as sourced.
+        <p className="mt-6 max-w-[40em] text-[14.5px] text-mut">
+          Hardware cost: the current prototype bill of materials is about {FACTS.prototypeBomEur}. The series target is{" "}
+          {FACTS.seriesTargetEur}, by moving to an integrated multi-channel receiver.
         </p>
       </div>
     </section>

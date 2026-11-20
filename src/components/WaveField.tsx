@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import * as THREE from "three";
 
-type Readout = { xy: HTMLElement | null; phase: HTMLElement | null; mag: HTMLElement | null };
+type Readout = { xy: HTMLElement | null; phase: HTMLElement | null; op: HTMLElement | null };
 
 const FIELD_W = 14;
 const FIELD_H = 8;
@@ -52,8 +52,8 @@ function buildField() {
 }
 
 /**
- * Full-screen WebGL wave field: an 80 MHz "ripple" spreading from the touch point,
- * with a sensor array on the left edge and the emitter ring on the right.
+ * Full-screen WebGL wave field: a radio "ripple" spreading from the touch point,
+ * with a sensor array on the left edge and the glove insert (emitter) on the right.
  * Writes a live readout into the given elements without re-rendering React.
  */
 export function WaveField({ readout, reduced }: { readout: React.RefObject<Readout>; reduced: boolean }) {
@@ -103,9 +103,10 @@ export function WaveField({ readout, reduced }: { readout: React.RefObject<Reado
     const band = new THREE.Mesh(track(new THREE.BoxGeometry(0.1, 6.4, 0.05)), inkMat);
     band.position.set(-FIELD_W / 2 - 0.2, 0, 0);
     rig.add(band);
-    const ring = new THREE.Mesh(track(new THREE.TorusGeometry(0.42, 0.07, 16, 48)), sigMat);
-    ring.position.set(FIELD_W / 2 + 0.1, -3.2, 0);
-    rig.add(ring);
+    // Glove insert (the emitter), shown as a small tag at the field's edge.
+    const insert = new THREE.Mesh(track(new THREE.BoxGeometry(0.9, 0.5, 0.08)), sigMat);
+    insert.position.set(FIELD_W / 2 + 0.1, -3.2, 0);
+    rig.add(insert);
     const touch = new THREE.Mesh(track(new THREE.RingGeometry(0.16, 0.22, 40)), sigMat);
     rig.add(touch);
 
@@ -171,10 +172,9 @@ export function WaveField({ readout, reduced }: { readout: React.RefObject<Reado
         const [first, last] = [SENSORS[0], SENSORS[SENSORS.length - 1]];
         const d1 = Math.hypot(cur.x - first[0], cur.y - first[1]);
         const d2 = Math.hypot(cur.x - last[0], cur.y - last[1]);
-        const { xy, phase, mag } = readout.current;
+        const { xy, phase } = readout.current;
         if (xy) xy.textContent = `${(((cur.x + FIELD_W / 2) / FIELD_W) * 100).toFixed(0)} / ${(((cur.y + FIELD_H / 2) / FIELD_H) * 100).toFixed(0)}`;
         if (phase) phase.textContent = `${(((d1 - d2) * 18) % 360).toFixed(0)}°`;
-        if (mag) mag.textContent = `${(20 * Math.log10((1 + d2) / (1 + d1))).toFixed(1)} dB`;
       }
       renderer.render(scene, cam);
       if (!reduced) raf = requestAnimationFrame(render);

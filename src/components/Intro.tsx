@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { FACTS } from "../content";
 import { useInView } from "../lib/motion";
 
-const LINES = ["Touch without glass.", "Work without taking gloves off.", "Control a machine with your own hand."];
+const LINES = ["Keep the gloves on.", "Nothing to fog, crack or freeze.", "Every press signed by the glove that made it."];
 
 /** Statement that brightens as it scrolls into view. */
 function Reveal({ text, reduced }: { text: string; reduced: boolean }) {
@@ -30,7 +30,19 @@ function Reveal({ text, reduced }: { text: string; reduced: boolean }) {
   );
 }
 
-function CountUp({ to, pre = "", suf = "", reduced }: { to: number; pre?: string; suf?: string; reduced: boolean }) {
+function CountUp({
+  to,
+  pre = "",
+  suf = "",
+  decimals = 0,
+  reduced,
+}: {
+  to: number;
+  pre?: string;
+  suf?: string;
+  decimals?: number;
+  reduced: boolean;
+}) {
   const { ref, inView } = useInView<HTMLDivElement>(0.6);
   const [value, setValue] = useState(reduced ? to : 0);
   useEffect(() => {
@@ -51,7 +63,7 @@ function CountUp({ to, pre = "", suf = "", reduced }: { to: number; pre?: string
   return (
     <div ref={ref} className="display text-[clamp(44px,5.4vw,78px)] leading-none tracking-[-.03em] tabular-nums">
       {pre}
-      {Math.round(value).toLocaleString("en-US")}
+      {value.toLocaleString("en-US", { minimumFractionDigits: decimals, maximumFractionDigits: decimals }).replace("-", "−")}
       {suf}
     </div>
   );
@@ -59,10 +71,30 @@ function CountUp({ to, pre = "", suf = "", reduced }: { to: number; pre?: string
 
 export function Intro({ reduced }: { reduced: boolean }) {
   const stats = [
-    { to: 1400, pre: "€700 to ", text: "What an industrial capacitive touchscreen terminal costs today, and it still fails in water." },
-    { to: FACTS.buildCostEur, pre: "€", text: `Build cost per Hado unit, with about ${FACTS.assemblyMin} minutes of assembly.` },
-    { to: FACTS.undercutPct[1], pre: `${FACTS.undercutPct[0]} to `, suf: "%", text: "Target undercut against rugged glass terminals." },
-    { to: FACTS.ruggedMarketUsdB, pre: "$", suf: "B", text: `Rugged display market in 2025 (${FACTS.ruggedMarketSource}).` },
+    {
+      to: FACTS.freezerC,
+      suf: " °C",
+      text: "Freezer warehouses, where operators wear thick insulated gloves and screens fog with condensation.",
+    },
+    {
+      to: FACTS.pcapGloveMm,
+      pre: "~",
+      suf: " mm",
+      text: "Roughly the glove thickness today's glove-mode touchscreens are specified for. Insulated gloves are thicker.",
+    },
+    {
+      to: FACTS.testErrorMm,
+      pre: "< ",
+      suf: " mm",
+      text: "Pass mark for our go/no-go test: mean touch error with no per-user calibration.",
+    },
+    {
+      to: FACTS.hmiMarketUsdB,
+      pre: "$",
+      suf: "B",
+      decimals: 1,
+      text: `Industrial HMI terminal market in 2025 (${FACTS.hmiMarketSource}).`,
+    },
   ];
   return (
     <section className="py-[clamp(90px,13vw,180px)]">
@@ -81,7 +113,7 @@ export function Intro({ reduced }: { reduced: boolean }) {
                 i === 2 ? "md:border-l md:pl-6" : "",
               ].join(" ")}
             >
-              <CountUp to={s.to} pre={s.pre} suf={s.suf} reduced={reduced} />
+              <CountUp to={s.to} pre={s.pre} suf={s.suf} decimals={s.decimals} reduced={reduced} />
               <p className="mt-2.5 mb-0 text-[14.5px] text-mut">{s.text}</p>
             </div>
           ))}

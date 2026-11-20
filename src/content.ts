@@ -1,35 +1,24 @@
-/** Single source for the figures shown on the page. Keep in sync with the pitch and grant texts. */
+/**
+ * Single source for the figures and copy shown on the page.
+ * Must match the Hado positioning and the SBA grant form (20.11.2026).
+ */
 export const FACTS = {
-  signalMHz: 80,
-  chip: "AD8302",
+  ismBands: "13.56 or 40.68 MHz",
   calibrationMin: 5,
   touchZones: 3,
-  buildCostEur: 150,
-  assemblyMin: 40,
-  retailEur: [400, 500] as const,
-  undercutPct: [40, 60] as const,
-  ruggedMarketUsdB: 12,
-  ruggedMarketSource: "The Business Research Company, 2025 estimate",
+  prototypeBomEur: "200–300 €",
+  seriesTargetEur: "under 150 €",
+  panelEur: "590–790 €",
+  insertEur: "25–40 €",
+  freezerC: -25,
+  pcapGloveMm: 2,
+  hmiMarketUsdB: 5.5,
+  hmiMarketSource: "Straits Research, 2025",
+  testErrorMm: 10,
   studyUrl: "https://yangzhang.dev/research/SkinTrack/SkinTrack.pdf",
-  studyAccuracyPct: 99,
-  studyErrorMm: 7.6,
+  /** Pilot contact. Leave empty until a real address is chosen; the CTA button hides itself. */
+  contactEmail: "",
 } as const;
-
-export type PriceRow = {
-  label: string;
-  value: string;
-  /** Position on a shared 0 to 3000 scale, as fractions. */
-  from: number;
-  to: number;
-  highlight?: boolean;
-};
-
-export const PRICES: PriceRow[] = [
-  { label: "Rugged tablet", value: "$800 to $3,000", from: 800 / 3000, to: 1 },
-  { label: "Industrial PCAP screen", value: "$800 to $1,600", from: 800 / 3000, to: 1600 / 3000 },
-  { label: "Industrial resistive screen", value: "$300 to $800", from: 300 / 3000, to: 800 / 3000 },
-  { label: "Hado, target price", value: "€400 to €500", from: 400 / 3000, to: 500 / 3000, highlight: true },
-];
 
 export type Member = {
   name: string;
@@ -59,38 +48,87 @@ export const TEAM: Member[] = [
     name: "Adam Daniel Donoval",
     role: "Co-founder, sales",
     initials: "AD",
-    bio: "Co-founder and managing director of Cassava s. r. o. Leads customer discovery with plants and machine builders, partnerships and investor conversations.",
+    bio: "Co-founder and managing director of Cassava s. r. o. Leads customer discovery with cold stores, logistics sites and machine builders, partnerships and investor conversations.",
     highlights: [],
   },
 ];
 
+export const SITES = [
+  {
+    title: "Cold stores",
+    when: "First",
+    text: "Freezer warehouses at −25 °C. Operators wear thick insulated gloves, screens fog with condensation, and taking a glove off means cold hands and lost minutes.",
+  },
+  {
+    title: "Yards and ports",
+    when: "First",
+    text: "Outdoor terminals in rain, frost and dirt. Heavy work gloves, wet surfaces, and many hands on the same panel.",
+  },
+  {
+    title: "Food washdown",
+    when: "Next",
+    text: "Lines hosed down every shift. A sealed, glass-free surface with nothing to crack and nothing to collect dirt.",
+  },
+] as const;
+
+export const BENEFITS = [
+  { h: "Works through thick gloves", p: "The signal comes from the glove insert, not from skin touching glass, so insulated and soaked gloves are not the limit." },
+  { h: "Condensation does not press buttons", p: "Water, frost and a sleeve brushing the panel emit no code, so they cannot trigger a press." },
+  { h: "Every press has a name", p: "Each glove carries its own code. The panel logs which operator pressed what, with no badge tap per action." },
+  { h: "Software-defined layout", p: "Buttons and zones change with a software update, not a rewired keypad." },
+  { h: "Never a safety circuit", p: "Hado is an operator input. Emergency stops stay hardwired, as EN 60204-1 and ISO 13850 require." },
+  { h: "Fallback built in", p: "No glove insert or a flat battery? Visitors and maintenance log in with PIN and badge and keep working." },
+] as const;
+
+export const PRICING = [
+  { name: "Hado panel", price: "590–790 €", note: "Sealed, glass-free control panel next to the existing screen. Target price." },
+  { name: "Glove inserts", price: "25–40 € / pair", note: "Sewn into company-issued work gloves and replaced with them. Target ≥ 12 h battery, washable, works at −25 °C." },
+  { name: "Site licence", price: "Per site", note: "Operator identification, press logs and audit trail, layout updates." },
+] as const;
+
+export const TEST_CRITERIA = [
+  "Blind test with 10 people and 3 glove types: nitrile, 3 mm leather, 5 mm insulated",
+  "No per-user calibration, targets under a 4 mm cover; pass at mean error under 10 mm and touch F1 above 97 %",
+  "Repeat with a salt-water film and soaked gloves",
+  "Paid EMC pre-scan: radiated immunity and glove emissions",
+  "Head-to-head against an off-the-shelf glove-mode touchscreen with the same gloves and cover",
+] as const;
+
 export const FAQ: { q: string; a: string }[] = [
   {
     q: "How does it work?",
-    a: "A ring or glove sends an 80 MHz signal. Sensors in a terminal pad or a bracelet measure its phase shift and magnitude difference. Those two values place the touch in two dimensions.",
+    a: "An insert sewn into the work glove sends a coded radio signal in a licence-free ISM band (13.56 or 40.68 MHz). Sensors in the panel measure its phase shift and magnitude difference to place the touch in two dimensions, and the code tells the panel which glove it is.",
   },
   {
-    q: "Does it work with thick gloves?",
-    a: "The signal comes from the emitter in the ring or glove, not from bare skin on glass, so glove thickness is not the limit it is for touchscreens. Testing in real gloves is our next step.",
+    q: "Does it replace our touchscreen?",
+    a: "No. Hado is a sealed, software-defined control panel that sits next to the existing screen and replaces the touch or keypad input. Your display and computer stay as they are.",
   },
   {
-    q: "Can someone trigger it by accident?",
-    a: "A splash of water, a sleeve or a tool does not emit the signal, so it cannot press a button. Later, each ring can carry its own code, so the terminal also knows who is operating it.",
+    q: "Does it really work in freezer gloves?",
+    a: "That is exactly what our first test checks: 10 people, nitrile, 3 mm leather and 5 mm insulated gloves, no calibration, with a salt-water film. Today's glove-mode touchscreens are specified for gloves up to roughly 1.5 to 2 mm.",
   },
   {
-    q: "What does it cost?",
-    a: "Build cost is about 150 euros per unit today, with around 40 minutes of assembly. The target retail price is 400 to 500 euros.",
+    q: "Can it be used for safety functions?",
+    a: "No. Hado is for operator input only. Emergency stops and other safety functions stay hardwired, as EN 60204-1 and ISO 13850 require.",
+  },
+  {
+    q: "What if a glove insert is missing or flat?",
+    a: "The panel falls back to PIN and badge login, so visitors and maintenance can still operate it. The insert is designed for at least a 12-hour shift.",
+  },
+  {
+    q: "What will it cost?",
+    a: "Target prices: about 590 to 790 € per panel, 25 to 40 € per pair of glove inserts, and a site software licence for operator identification and logs. The prototype bill of materials is about 200 to 300 € today; the series target is under 150 €.",
   },
   {
     q: "Where is the project today?",
-    a: "A working proof of concept that recognises three buttons after about five minutes of calibration, using one AD8302 chip.",
+    a: "A lab proof of concept that tells three touch zones apart after about five minutes of calibration. The next step is a three-month go/no-go validation in Q1 2027.",
   },
   {
     q: "Where does the idea come from?",
-    a: "SkinTrack, a 2016 study from Carnegie Mellon University. It showed 99% touch detection and a 7.6 mm mean error on skin. We turn the principle around for industry and improve the design and data analysis for dirty, wet conditions.",
+    a: "SkinTrack, a 2016 study from Carnegie Mellon University, showed that the phase of a signal travelling through the body can locate a touch. We turn the principle around for industry: the emitter is in the glove, the sensors are in a sealed panel, and each glove carries its own code.",
   },
   {
     q: "Why the name Hado?",
-    a: "波動 (hadō) is Japanese for wave, or wave motion. It nods to the 80 MHz radio waves that power the interface, and it is short and easy to say in any language.",
+    a: "波動 (hadō) is Japanese for wave, or wave motion: a nod to the radio waves that carry every press. It is short and easy to say in any language.",
   },
 ];

@@ -1,17 +1,17 @@
-import { FACTS, FAQ } from "../content";
+import { FACTS, FAQ, TEST_CRITERIA } from "../content";
 
 const SPEC = [
-  [`${FACTS.signalMHz} MHz`, "Signal"],
-  [FACTS.chip, "Sensing chip"],
-  [`${FACTS.calibrationMin} min`, "Calibration"],
   [`${FACTS.touchZones}`, "Touch zones today"],
-  [`€${FACTS.buildCostEur}`, "Build cost"],
+  [`${FACTS.calibrationMin} min`, "Calibration today"],
+  ["ISM", `Licence-free band, ${FACTS.ismBands}`],
+  [FACTS.prototypeBomEur, "Prototype bill of materials"],
+  [FACTS.seriesTargetEur, "Series cost target"],
 ] as const;
 
 const TIMELINE = [
-  ["Now", "Three button proof of concept with one sensor chip."],
-  ["Next", "More sensors for a full 2D surface, shorter calibration."],
-  ["Then", "Testing with real gloves in real plants, then CE certification."],
+  ["Q1 2027", "Three-month go/no-go validation (below). If it fails, we stop or change course."],
+  ["Q3 2027", "Industrial prototype and two paid pilots or letters of intent in cold storage."],
+  ["2028", "CE certification and first revenue in 2028 to 2029."],
 ] as const;
 
 export function Status() {
@@ -20,11 +20,11 @@ export function Status() {
       <div className="relative mx-2 rounded-[36px] bg-ink py-[clamp(48px,8vw,110px)] text-white md:mx-4">
         <div className="wrap">
           <h2 className="display m-0 mb-6.5 max-w-[11em] text-[clamp(40px,6vw,84px)] leading-[.96] text-white">
-            A working proof of concept.
+            A lab proof of concept, honestly.
           </h2>
-          <p className="mb-4 max-w-[34em] text-mut-dark">
-            The proof of concept already tells three touch points apart after a five minute calibration. It runs on one{" "}
-            {FACTS.chip} gain and phase chip and standard {FACTS.signalMHz} MHz CMOS oscillators.
+          <p className="mb-4 max-w-[36em] text-mut-dark">
+            Today the proof of concept tells three touch zones apart after a five-minute calibration, on a single gain
+            and phase receiver. Before we build a product, we put it through a test that can say no.
           </p>
           <div className="mt-14 grid grid-cols-2 border-t border-white/25 md:grid-cols-5">
             {SPEC.map(([value, name]) => (
@@ -42,6 +42,48 @@ export function Status() {
               </li>
             ))}
           </ul>
+          <div className="mt-12 max-w-[46em]">
+            <h3 className="display m-0 mb-4 text-[clamp(28px,3vw,40px)] leading-none text-white">The go/no-go test</h3>
+            <ol className="m-0 list-decimal pl-5 text-[15px] text-mut-dark marker:text-sig">
+              {TEST_CRITERIA.map((t) => (
+                <li key={t} className="py-1.5">
+                  {t}
+                </li>
+              ))}
+            </ol>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export function Pilot() {
+  const email = FACTS.contactEmail;
+  return (
+    <section id="pilot" className="py-[clamp(90px,13vw,180px)]">
+      <div className="wrap grid items-end gap-10 md:grid-cols-[1.4fr_1fr] md:gap-16">
+        <div>
+          <h2 className="display m-0 mb-6.5 max-w-[11em] text-[clamp(40px,6vw,84px)] leading-[.96]">
+            Run a pilot in your cold store.
+          </h2>
+          <p className="m-0 max-w-[34em] text-mut">
+            We are looking for cold-storage, logistics and port sites where operators fight touchscreens in thick gloves.
+            Tell us about one panel and the gloves your people wear, and we will come and test it with you.
+          </p>
+        </div>
+        <div className="border-t border-ink pt-5.5">
+          {email ? (
+            <a
+              href={`mailto:${email}?subject=${encodeURIComponent("Hado pilot interest")}`}
+              className="inline-block rounded-full bg-ink px-6.5 py-3.5 text-[15px] font-medium text-white no-underline transition-transform hover:-translate-y-0.5"
+            >
+              Register pilot interest
+            </a>
+          ) : (
+            <p className="m-0 text-mut">Contact details coming soon.</p>
+          )}
+          {email && <p className="mt-3 mb-0 text-[14.5px] text-mut">{email}</p>}
         </div>
       </div>
     </section>
