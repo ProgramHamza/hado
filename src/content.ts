@@ -71,6 +71,14 @@ export const SITES = [
   },
 ] as const;
 
+/** Secondary, later consumer variant (the original SkinTrack idea). Industrial stays the main product. */
+export const LATER_VARIANT = {
+  title: "On your skin",
+  when: "Later",
+  text: "A ring sends the signal and the back of your hand becomes the touchpad, to control a smartwatch, smart glasses or earbuds without touching them. This is the original SkinTrack idea and a later consumer variant, not our first product.",
+  note: "Rings stay out of industry: near rotating machinery they are a degloving hazard and usually banned, so the industrial emitter lives in the glove.",
+} as const;
+
 export const BENEFITS = [
   { h: "Works through thick gloves", p: "The signal comes from the glove insert, not from skin touching glass, so insulated and soaked gloves are not the limit." },
   { h: "Condensation does not press buttons", p: "Water, frost and a sleeve brushing the panel emit no code, so they cannot trigger a press." },
@@ -118,6 +126,10 @@ export const FAQ: { q: string; a: string }[] = [
   {
     q: "What will it cost?",
     a: "Target prices: about 590 to 790 € per panel, 25 to 40 € per pair of glove inserts, and a site software licence for operator identification and logs. The prototype bill of materials is about 200 to 300 € today; the series target is under 150 €.",
+  },
+  {
+    q: "Why a glove insert and not a ring?",
+    a: "Rings are usually banned near rotating machinery because they can catch and cause degloving injuries. Gloves are already managed protective equipment, so the industrial emitter is sewn into them. A ring is only planned for a later consumer variant, where the back of the hand controls a smartwatch, glasses or earbuds.",
   },
   {
     q: "Where is the project today?",

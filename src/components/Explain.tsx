@@ -1,4 +1,4 @@
-import { BENEFITS, FACTS, SITES } from "../content";
+import { BENEFITS, FACTS, LATER_VARIANT, SITES } from "../content";
 
 const section = "py-[clamp(90px,13vw,180px)]";
 const h2 = "display m-0 mb-6.5 max-w-[11em] text-[clamp(40px,6vw,84px)] leading-[.96]";
@@ -16,7 +16,8 @@ export function How() {
           </p>
           <p className="mb-4 max-w-[34em]">
             The panel sits next to the screen you already have and replaces the touch or keypad input. The display and
-            the computer stay as they are.
+            the computer stay as they are. No rings on the factory floor: near rotating machinery they are a hazard, so
+            the emitter lives in the glove.
           </p>
           <p className="mb-4 max-w-[34em] text-mut">
             The principle builds on SkinTrack, published by Carnegie Mellon researchers in 2016, which located touches from
@@ -65,8 +66,26 @@ export function Sites() {
             </div>
           ))}
         </div>
+        <LaterVariant />
       </div>
     </section>
+  );
+}
+
+/** Clearly secondary consumer variant: ring emitter, back of the hand as the pad. */
+function LaterVariant() {
+  const v = LATER_VARIANT;
+  return (
+    <aside className="mt-16 grid gap-6 rounded-[28px] border border-dashed border-line p-7 md:grid-cols-[auto_1fr] md:gap-12 md:p-9">
+      <div>
+        <div className="mb-2 text-[14.5px] font-semibold text-mut">{v.when} · consumer</div>
+        <h3 className="display m-0 text-[clamp(30px,3.4vw,40px)] leading-none text-mut">{v.title}</h3>
+      </div>
+      <div>
+        <p className="m-0 mb-3 max-w-[40em] text-mut">{v.text}</p>
+        <p className="m-0 max-w-[40em] text-[14.5px] text-mut">{v.note}</p>
+      </div>
+    </aside>
   );
 }
 
