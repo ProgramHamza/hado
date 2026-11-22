@@ -242,12 +242,11 @@ export const sk: Copy = {
       {
         role: "Zakladateľ Hado, CTO",
         photoAlt: "Marek Hromada na MILSET ESE 2026 so svojím projektom bionickej ruky",
-        bio: "Prišiel s nápadom Hado a vyvíja ho: hardvér, spracovanie signálu a rozpoznávanie dotyku.",
+        bio: "Prišiel s nápadom Hado a vyvíja hardvér a spracovanie signálu.",
         highlights: [
-          "Víťaz FVaT AMAVET 2025 a 2026; finalista MILSET ESE 2026 a ISEF 2027",
-          "Dvojnásobný víťaz Ceny Národného centra robotiky; cena Nexttech za kĺb bionickej ruky Antromorph",
-          "Výskum na Toyohashi University of Technology (ENMA): navigácia robota Unitree Go2 so spikujúcou neurónovou sieťou",
-          "Výskum v Národnom centre robotiky (COCOHRIP): rameno UR5, ktoré hrá dámu s ľuďmi",
+          "Víťaz FVaT AMAVET 2025 a 2026; finalista ISEF 2027",
+          "Dvojnásobný víťaz Ceny Národného centra robotiky",
+          "Výskum robotiky v Japonsku (ENMA) a na Slovensku (COCOHRIP)",
         ],
       },
       {

@@ -232,12 +232,11 @@ export const en = {
       {
         role: "Founder of Hado, CTO",
         photoAlt: "Marek Hromada at MILSET ESE 2026 with his bionic hand project",
-        bio: "Came up with Hado and builds it: hardware, signal processing and touch detection.",
+        bio: "Came up with Hado and builds the hardware and signal processing.",
         highlights: [
-          "Winner of FVaT AMAVET 2025 and 2026; MILSET ESE 2026 and ISEF 2027 finalist",
-          "Two-time National Centre of Robotics Prize winner; Nexttech award for the Antromorph bionic-hand joint",
-          "Research at Toyohashi University of Technology (ENMA): spiking-neural-network navigation for a Unitree Go2 robot",
-          "Research at the National Centre of Robotics (COCOHRIP): a UR5 arm that plays checkers with people",
+          "Winner of FVaT AMAVET 2025 and 2026; ISEF 2027 finalist",
+          "Two-time National Centre of Robotics Prize winner",
+          "Robotics research in Japan (ENMA) and Slovakia (COCOHRIP)",
         ],
       },
       {
