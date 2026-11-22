@@ -1,7 +1,7 @@
 /**
  * Language-independent facts: numbers, names, photos, links.
  * All visible text lives in src/i18n/en.ts and src/i18n/sk.ts.
- * Figures must match the Hado positioning and the SBA grant form (20.11.2026).
+ * Figures must match the Hado positioning and the SBA grant form (Hado_v2, 22.11.2026).
  */
 export const FACTS = {
   freezerC: -25,

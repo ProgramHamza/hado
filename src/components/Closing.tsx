@@ -32,7 +32,7 @@ export function Status() {
               </div>
             ))}
           </div>
-          <ul className="mt-10 grid list-none gap-7 p-0 md:grid-cols-3">
+          <ul className="mt-10 grid list-none gap-7 p-0 md:grid-cols-2 lg:grid-cols-4">
             {s.timeline.map(([when, what], i) => (
               <li key={when} className={`border-t-2 pt-4 text-[15px] text-mut-dark ${i === 0 ? "border-sig" : "border-white/25"}`}>
                 <strong className="mb-1 block font-medium text-white">{when}</strong>

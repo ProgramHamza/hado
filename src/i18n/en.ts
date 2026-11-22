@@ -79,7 +79,7 @@ export const en = {
     title: "How it works",
     p1: "A small insert sewn into company-issued work gloves sends a coded signal in a licence-free ISM band (13.56 or 40.68 MHz). Sensors around a sealed, glass-free panel measure how the signal arrives, how late and how weak, and from that we calculate where the fingertip is. The code tells us which glove it was.",
     p2: "The panel sits next to the screen you already have and replaces the touch or keypad input. The display and the computer stay as they are. We don't use rings on the factory floor because they are dangerous near rotating machinery. That's why the emitter is in the glove.",
-    p3: "The principle builds on SkinTrack, published by Carnegie Mellon researchers in 2016, which located touches from the phase of a signal travelling through the body. We flipped it around for industry: emitter in the glove, sensors in the panel, a code per operator.",
+    p3: "The principle builds on SkinTrack, published by Carnegie Mellon researchers at CHI 2016, which located touches from the phase and amplitude of a signal travelling through the body, with 99 % touch detection and a mean error of 7.6 mm. We flipped it around for industry: emitter in the glove, sensors in the panel, a code per operator.",
   },
   name: {
     title: "Why the name",
@@ -87,7 +87,7 @@ export const en = {
   },
   sites: {
     title: "Where we start",
-    lead: "We start where gloves are thickest, surfaces are wet and there is no rotating machinery at the terminal.",
+    lead: "We start where gloves are thickest, surfaces are wet and there is no rotating machinery at the terminal. Later we want to move into other thick-glove sectors such as mining, energy and defence.",
     items: [
       {
         title: "Cold stores",
@@ -96,7 +96,7 @@ export const en = {
       },
       {
         title: "Yards and ports",
-        when: "First",
+        when: "Next",
         text: "Outdoor terminals in rain, frost and dirt. Heavy work gloves, wet surfaces, and many hands on the same panel.",
       },
       {
@@ -136,6 +136,18 @@ export const en = {
         h: "PIN and badge fallback",
         p: "No glove insert or a flat battery? Visitors and maintenance log in with PIN and badge and keep working.",
       },
+      {
+        h: "Permissions follow the glove",
+        p: "The panel knows who is pressing and what they may do. Machine settings only open for the gloves of people allowed to change them, with no PIN or badge.",
+      },
+      {
+        h: "Ignores motor noise",
+        p: "Each glove's code lets the receiver filter out interference from motors and inverters on the floor.",
+      },
+      {
+        h: "Nothing to crack or scratch",
+        p: "The sensors sit under a tough cover that handles frost, water, washdown and impacts.",
+      },
     ],
   },
   tryIt: {
@@ -167,19 +179,19 @@ export const en = {
   },
   pricing: {
     title: "Pricing",
-    lead: "Target prices, to be confirmed in paid pilots. The inserts are replaced together with the work gloves, and the site licence covers operator identification and press logs.",
+    lead: "Target prices, to be confirmed in paid pilots. The inserts are replaced together with the work gloves, and the software licence covers glove and operator management and press logs.",
     items: [
       {
         name: "Hado panel",
         price: "590–790 €",
-        note: "Sealed, glass-free control panel next to the existing screen. Target price.",
+        note: "Sealed, glass-free control panel next to the existing screen. Price depends on size.",
       },
       {
         name: "Glove inserts",
         price: "25–40 € / pair",
         note: "Sewn into company-issued work gloves and replaced with them. Target ≥ 12 h battery, washable, works at −25 °C.",
       },
-      { name: "Site licence", price: "Per site", note: "Operator identification, press logs and audit trail, layout updates." },
+      { name: "Software licence", price: "~10 € / month per panel", note: "Glove and operator management, press logs for audits, updates." },
     ],
     hardware:
       "Hardware cost: the current prototype bill of materials is about 200–300 €. The series target is under 150 €, by moving to an integrated multi-channel receiver.",
@@ -199,9 +211,10 @@ export const en = {
       ["under 150 €", "Series cost target"],
     ],
     timeline: [
-      ["Q1 2027", "Three-month go/no-go validation (below). If it fails, we stop or change course."],
-      ["Q3 2027", "Industrial prototype and two paid pilots or letters of intent in cold storage."],
-      ["2028", "CE certification and first revenue in 2028 to 2029."],
+      ["Q1 2027", "Three-month go/no-go test (below) and interviews with cold-store operators. If it fails, we simplify Hado to a rugged keypad with operator identification."],
+      ["Q3 2027", "Industrial prototype (sealed panel, glove insert, ISM band) and two paid pilots or binding orders in cold storage."],
+      ["2028", "CE certification, a small series and more pilots."],
+      ["2028–2029", "Market launch and first revenue."],
     ],
     testTitle: "The go/no-go test",
     tests: [
@@ -288,7 +301,7 @@ export const en = {
       },
       {
         q: "What will it cost?",
-        a: "Target prices: about 590 to 790 € per panel, 25 to 40 € per pair of glove inserts, and a site software licence for operator identification and logs. The prototype bill of materials is about 200 to 300 € today; the series target is under 150 €.",
+        a: "Target prices: about 590 to 790 € per panel depending on size, 25 to 40 € per pair of glove inserts, and a software licence of about 10 € a month per panel for glove management and press logs. The prototype bill of materials is about 200 to 300 € today; the series target is under 150 €.",
       },
       {
         q: "Why a glove insert and not a ring?",
@@ -301,6 +314,22 @@ export const en = {
       {
         q: "Where does the idea come from?",
         a: "SkinTrack, a 2016 study from Carnegie Mellon University, showed that the phase of a signal travelling through the body can locate a touch. We turn the principle around for industry: the emitter is in the glove, the sensors are in a sealed panel, and each glove carries its own code.",
+      },
+      {
+        q: "How does it connect to our systems?",
+        a: "It plugs in like a USB keyboard or connects to your control system over Modbus or OPC UA, so your own maintenance team can install it. The target enclosure rating is IP67 / IP69K.",
+      },
+      {
+        q: "How is it different from rugged touchscreens and keypads?",
+        a: "Industrial touchscreens from makers like Siemens, B&R or Exor handle gloves and water better every year, but are usually specified for gloves up to 1.5 to 2 mm. IP69K piezo and inductive keypads are tough but fixed. Badge login identifies a session, not each press. Hado works through thick insulated gloves, logs who made every press, ties permissions to the glove and lets you change the layout in software.",
+      },
+      {
+        q: "Where will you sell first?",
+        a: "Slovakia, Czechia and Austria first, close to our pilot sites. Then Germany, Poland and the Netherlands, the largest cold-chain markets in Europe and home to many warehouse equipment makers. Later the US and Canada.",
+      },
+      {
+        q: "How big is the market?",
+        a: "Industrial HMI terminals were a 5.5 billion USD market in 2025, expected to reach 9.9 billion by 2034 (Straits Research). About 1.4 million industrial control panels are sold each year; we estimate 10 to 15 % of them work in thick gloves, cold or wet, around 150,000 to 200,000 panels a year.",
       },
       {
         q: "Why the name Hado?",

@@ -85,7 +85,7 @@ export const sk: Copy = {
     title: "Ako to funguje",
     p1: "Malá vložka všitá do firemných pracovných rukavíc vysiela kódovaný signál v bezlicenčnom pásme ISM (13,56 alebo 40,68 MHz). Senzory okolo utesneného panela bez skla merajú, ako signál prichádza, s akým oneskorením a akou silou, a z toho vypočítame, kde je prst. Kód nám povie, ktorá rukavica to bola.",
     p2: "Panel sa umiestni vedľa obrazovky, ktorú už máte, a nahradí dotykové alebo klávesnicové ovládanie. Displej aj počítač ostávajú. Prstene vo výrobe nepoužívame, pretože pri rotujúcich strojoch sú nebezpečné. Preto je vysielač v rukavici.",
-    p3: "Princíp nadväzuje na SkinTrack, ktorý v roku 2016 publikovali výskumníci z Carnegie Mellon University a ktorý určoval polohu dotyku z fázy signálu šíriaceho sa telom. Otočili sme ho pre priemysel: vysielač v rukavici, senzory v paneli a vlastný kód pre každého operátora.",
+    p3: "Princíp nadväzuje na SkinTrack, ktorý na konferencii CHI 2016 publikovali výskumníci z Carnegie Mellon University a ktorý určoval polohu dotyku z fázy a amplitúdy signálu šíriaceho sa telom, s 99 % rozpoznaním dotyku a priemernou chybou 7,6 mm. Otočili sme ho pre priemysel: vysielač v rukavici, senzory v paneli a vlastný kód pre každého operátora.",
   },
   name: {
     title: "Prečo tento názov",
@@ -93,7 +93,7 @@ export const sk: Copy = {
   },
   sites: {
     title: "Kde začíname",
-    lead: "Začíname tam, kde sú rukavice najhrubšie, povrchy mokré a pri termináli nie sú rotujúce stroje.",
+    lead: "Začíname tam, kde sú rukavice najhrubšie, povrchy mokré a pri termináli nie sú rotujúce stroje. Neskôr chceme ísť aj do ďalších odvetví s hrubými rukavicami, ako je ťažba, energetika a obrana.",
     items: [
       {
         title: "Mraziarne",
@@ -102,7 +102,7 @@ export const sk: Copy = {
       },
       {
         title: "Areály a prístavy",
-        when: "Najprv",
+        when: "Potom",
         text: "Vonkajšie terminály v daždi, mraze a špine. Ťažké pracovné rukavice, mokré povrchy a veľa rúk na jednom paneli.",
       },
       {
@@ -142,6 +142,18 @@ export const sk: Copy = {
         h: "Záložné prihlásenie PIN-om a kartou",
         p: "Chýba vložka alebo je vybitá batéria? Návštevy a údržba sa prihlásia PIN-om a kartou a pracujú ďalej.",
       },
+      {
+        h: "Oprávnenia podľa rukavice",
+        p: "Panel vie, kto ho ovláda a čo smie. Nastavenia stroja sa otvoria len rukaviciam ľudí, ktorí ich môžu meniť, bez PIN-u a karty.",
+      },
+      {
+        h: "Rušenie z motorov nevadí",
+        p: "Vďaka kódu každej rukavice prijímač odfiltruje rušenie z motorov a meničov v prevádzke.",
+      },
+      {
+        h: "Nie je čo rozbiť ani poškriabať",
+        p: "Snímače sú pod odolným krytom, ktorý vydrží mráz, vodu, umývanie aj nárazy.",
+      },
     ],
   },
   tryIt: {
@@ -173,12 +185,12 @@ export const sk: Copy = {
   },
   pricing: {
     title: "Ceny",
-    lead: "Cieľové ceny, ktoré potvrdíme v platených pilotných projektoch. Vložky sa vymieňajú spolu s pracovnými rukavicami a licencia pre prevádzku pokrýva identifikáciu operátorov a záznamy stlačení.",
+    lead: "Cieľové ceny, ktoré potvrdíme v platených pilotných projektoch. Vložky sa vymieňajú spolu s pracovnými rukavicami a softvérová licencia pokrýva správu rukavíc a operátorov a záznamy stlačení.",
     items: [
       {
         name: "Panel Hado",
         price: "590 – 790 €",
-        note: "Utesnený ovládací panel bez skla vedľa existujúcej obrazovky. Cieľová cena.",
+        note: "Utesnený ovládací panel bez skla vedľa existujúcej obrazovky. Cena podľa veľkosti.",
       },
       {
         name: "Vložky do rukavíc",
@@ -186,9 +198,9 @@ export const sk: Copy = {
         note: "Všité do firemných pracovných rukavíc a vymieňané spolu s nimi. Cieľ: batéria ≥ 12 h, prateľné, fungujú pri −25 °C.",
       },
       {
-        name: "Licencia pre prevádzku",
-        price: "Za prevádzku",
-        note: "Identifikácia operátorov, záznamy stlačení a audit, aktualizácie rozloženia.",
+        name: "Softvérová licencia",
+        price: "~10 € / mesiac za panel",
+        note: "Správa rukavíc a operátorov, záznamy stlačení pre audit, aktualizácie.",
       },
     ],
     hardware:
@@ -209,9 +221,10 @@ export const sk: Copy = {
       ["pod 150 €", "Cieľ pre sériovú výrobu"],
     ],
     timeline: [
-      ["Q1 2027", "Trojmesačné overenie go/no-go (nižšie). Ak neuspeje, skončíme alebo zmeníme smer."],
-      ["Q3 2027", "Priemyselný prototyp a dva platené pilotné projekty alebo listy o zámere v mraziarňach."],
-      ["2028", "Certifikácia CE a prvé tržby v rokoch 2028 až 2029."],
+      ["Q1 2027", "Trojmesačný test go/no-go (nižšie) a rozhovory s prevádzkovateľmi mraziarní. Ak neuspeje, zjednodušíme Hado na odolnú klávesnicu s identifikáciou pracovníka."],
+      ["Q3 2027", "Priemyselný prototyp (utesnený panel, vložka do rukavíc, pásmo ISM) a dva platené pilotné projekty alebo záväzné objednávky v mraziarňach."],
+      ["2028", "Certifikácia CE, malá séria a ďalšie piloty."],
+      ["2028 – 2029", "Uvedenie na trh a prvé tržby."],
     ],
     testTitle: "Test go/no-go",
     tests: [
@@ -298,7 +311,7 @@ export const sk: Copy = {
       },
       {
         q: "Koľko to bude stáť?",
-        a: "Cieľové ceny: približne 590 až 790 € za panel, 25 až 40 € za pár vložiek do rukavíc a softvérová licencia pre prevádzku na identifikáciu operátorov a záznamy. Materiál prototypu dnes stojí približne 200 až 300 €; cieľ pre sériovú výrobu je pod 150 €.",
+        a: "Cieľové ceny: približne 590 až 790 € za panel podľa veľkosti, 25 až 40 € za pár vložiek do rukavíc a softvérová licencia približne 10 € mesačne za panel na správu rukavíc a záznamy stlačení. Materiál prototypu dnes stojí približne 200 až 300 €; cieľ pre sériovú výrobu je pod 150 €.",
       },
       {
         q: "Prečo vložka v rukavici a nie prsteň?",
@@ -311,6 +324,22 @@ export const sk: Copy = {
       {
         q: "Odkiaľ pochádza nápad?",
         a: "SkinTrack, štúdia Carnegie Mellon University z roku 2016, ukázala, že z fázy signálu šíriaceho sa telom sa dá určiť poloha dotyku. My princíp otáčame pre priemysel: vysielač je v rukavici, senzory v utesnenom paneli a každá rukavica má vlastný kód.",
+      },
+      {
+        q: "Ako sa pripojí k našim systémom?",
+        a: "Pripojí sa ako USB klávesnica alebo k riadiacemu systému cez Modbus či OPC UA, takže ho zvládne nainštalovať vaša vlastná údržba. Cieľové krytie je IP67 / IP69K.",
+      },
+      {
+        q: "Čím sa líši od odolných dotykových obrazoviek a klávesníc?",
+        a: "Priemyselné dotykové panely od výrobcov ako Siemens, B&R či Exor zvládajú rukavice a vodu každým rokom lepšie, no bežne sú určené pre rukavice do 1,5 až 2 mm. Piezoelektrické a indukčné klávesnice s krytím IP69K sú odolné, ale statické. Prihlásenie kartou identifikuje reláciu, nie každé stlačenie. Hado funguje cez hrubé zateplené rukavice, zaznamená, kto urobil každé stlačenie, viaže oprávnenia na rukavicu a rozloženie sa mení v softvéri.",
+      },
+      {
+        q: "Kde budete predávať najprv?",
+        a: "Najprv na Slovensku, v Česku a Rakúsku, blízko našich pilotných prevádzok. Potom v Nemecku, Poľsku a Holandsku, na najväčších chladiarenských trhoch v Európe, kde sídli aj veľa výrobcov skladovej techniky. Neskôr v USA a Kanade.",
+      },
+      {
+        q: "Aký veľký je trh?",
+        a: "Trh priemyselných HMI terminálov mal v roku 2025 hodnotu 5,5 mld. USD a do roku 2034 má dosiahnuť 9,9 mld. USD (Straits Research). Ročne sa predá približne 1,4 milióna priemyselných ovládacích panelov; odhadujeme, že 10 až 15 % z nich pracuje v hrubých rukaviciach, v chlade alebo vo vlhku, teda približne 150 až 200 tisíc panelov ročne.",
       },
       {
         q: "Prečo názov Hado?",
