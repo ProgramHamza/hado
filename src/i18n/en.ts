@@ -252,6 +252,7 @@ export const en = {
           "Winner of FVaT AMAVET 2025 and 2026; ISEF 2027 finalist",
           "Two-time National Centre of Robotics Prize winner",
           "Robotics research in Japan (ENMA) and Slovakia (COCOHRIP)",
+          "Co-founder of Papaya International",
         ],
       },
       {

@@ -262,14 +262,15 @@ export const sk: Copy = {
           "Víťaz FVaT AMAVET 2025 a 2026; finalista ISEF 2027",
           "Dvojnásobný víťaz Ceny Národného centra robotiky",
           "Výskum robotiky v Japonsku (ENMA) a na Slovensku (COCOHRIP)",
+          "Spoluzakladateľ Papaya International",
         ],
       },
       {
         role: "CFO",
         photoAlt: "Adam Daniel Donoval",
-        bio: "Spoluzakladateľ a konateľ spoločnosti Cassava s. r. o. Má na starosti financie, granty a investorov.",
+        bio: "Spoluzakladateľ a konateľ spoločnosti Cassava s. r. o. Vedie financie, granty a investorov.",
         highlights: [
-          "Spoluzakladateľ Papaya International, mládežníckej neziskovky s projektmi Erasmus+",
+          "Spoluzakladateľ Papaya International, neziskovky s projektmi Erasmus+",
           "Future Founders (The Spot) a InVenture Mind (Georgia Tech)",
           "Dvojnásobný víťaz Noove Challenge, víťaz BARS5, bronz z ekonomickej olympiády",
         ],
@@ -277,7 +278,7 @@ export const sk: Copy = {
       {
         role: "COO",
         photoAlt: "Teo Višňovský",
-        bio: "Spoluzakladateľ a konateľ spoločnosti Cassava s. r. o. Vedie prevádzku: pilotné projekty, dodávateľov a rozhovory so zákazníkmi.",
+        bio: "Spoluzakladateľ a konateľ spoločnosti Cassava s. r. o. Vedie prevádzku, piloty a dodávateľov.",
         highlights: [
           "Softvérový inžinier v Aerostacks: dáta z dronu na predpovedanie lavínového rizika",
           "Spoluzakladateľ Papaya International; Future Founders (The Spot)",
