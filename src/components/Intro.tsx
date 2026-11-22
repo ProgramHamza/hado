@@ -23,7 +23,7 @@ function Reveal({ text, reduced }: { text: string; reduced: boolean }) {
     };
   }, [reduced]);
   return (
-    <p ref={ref} className="display m-0 mb-[.22em] text-[clamp(38px,6.4vw,92px)] leading-none transition-opacity duration-200">
+    <p ref={ref} className="display m-0 mb-[.22em] text-[clamp(30px,4.6vw,64px)] leading-none transition-opacity duration-200">
       {text}
     </p>
   );

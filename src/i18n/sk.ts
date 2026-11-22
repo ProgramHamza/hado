@@ -20,8 +20,8 @@ export const sk: Copy = {
   },
   hero: {
     wave: "vlna",
-    title: "Stláčajte aj v najhrubších rukaviciach.",
-    lead: "Hado je utesnený ovládací panel bez skla pre mraziarne, vonkajšie areály a mokré prevádzky. Vložka v pracovnej rukavici vysiela kódovaný signál, takže panel vie, kam ste stlačili a kto to bol. Rukavice ostávajú na rukách.",
+    title: "Ovládanie, ktoré funguje aj v hrubých rukaviciach",
+    lead: "Hado je utesnený ovládací panel bez sklenenej obrazovky, určený pre mraziarne, vonkajšie areály a mokré prevádzky. Malá vložka v pracovnej rukavici vysiela kódovaný rádiový signál. Panel z neho zistí, kam ste stlačili a čia rukavica to bola, takže si nikto nemusí vyzliekať rukavice.",
     ctaHow: "Ako to funguje",
     ctaPilot: "Pilotný projekt",
     readoutTitle: "Model senzorov. Pohybujte kurzorom nad poľom.",
@@ -32,7 +32,7 @@ export const sk: Copy = {
     readoutNote: "Ilustrácia princípu, nie živé dáta.",
   },
   intro: {
-    lines: ["Rukavice ostávajú na rukách.", "Nič, čo sa zarosí, praskne alebo zamrzne.", "Každé stlačenie podpísané rukavicou, ktorá ho urobila."],
+    lines: ["Už žiadne vyzliekanie rukavíc kvôli jednému tlačidlu.", "Žiadne sklo, ktoré sa zarosí alebo praskne.", "A viete, kto čo stlačil."],
     stats: [
       {
         pre: "",
@@ -55,17 +55,17 @@ export const sk: Copy = {
   story: {
     aria: "Animácia cesty signálu Hado pri posúvaní",
     captions: [
-      { h: "Rukavica vysiela.", p: "Vložka všitá do pracovnej rukavice vysiela kódovaný signál v bezlicenčnom rádiovom pásme." },
+      { h: "Rukavica vyšle signál", p: "Vložka všitá do pracovnej rukavice vysiela kódovaný signál v bezlicenčnom rádiovom pásme." },
       {
-        h: "Panel porovnáva.",
+        h: "Panel vypočíta polohu",
         p: "Každý senzor na okraji utesneného panela zachytí signál o niečo neskôr a slabší. Fáza a amplitúda určia polohu. Pohybom kurzora nad panelom ho môžete stlačiť sami.",
       },
       {
-        h: "Mráz ani voda nevadia.",
-        p: "V chlade a vlhku sa sklenená obrazovka zarosí a vymýšľa si dotyky. Kódovanému signálu je jedno, aká hrubá je rukavica.",
+        h: "Mráz ani voda ho nespustia",
+        p: "V chlade a vlhku sa sklenená obrazovka zarosí a registruje dotyky, ktoré nikto neurobil. Kódovaný signál funguje rovnako bez ohľadu na hrúbku rukavice.",
       },
       {
-        h: "Každé stlačenie má meno.",
+        h: "Každá rukavica má vlastný kód",
         p: "Každá rukavica má vlastný kód, takže panel zaznamená, kto čo stlačil. Pohybom kurzora stláčajte.",
       },
     ],
@@ -82,17 +82,17 @@ export const sk: Copy = {
     },
   },
   how: {
-    title: "Rukavica hovorí. Panel počúva.",
-    p1: "Malá vložka všitá do firemných pracovných rukavíc vysiela kódovaný signál v bezlicenčnom pásme ISM (13,56 alebo 40,68 MHz). Senzory okolo utesneného panela bez skla merajú, ako signál prichádza, s akým oneskorením a akou silou, a z výpočtu vyjde poloha prsta. Kód prezradí, ktorá rukavica to bola.",
-    p2: "Panel sa umiestni vedľa obrazovky, ktorú už máte, a nahradí dotykové alebo klávesnicové ovládanie. Displej aj počítač ostávajú. Žiadne prstene vo výrobe: pri rotujúcich strojoch sú nebezpečné, preto je vysielač v rukavici.",
+    title: "Ako to funguje",
+    p1: "Malá vložka všitá do firemných pracovných rukavíc vysiela kódovaný signál v bezlicenčnom pásme ISM (13,56 alebo 40,68 MHz). Senzory okolo utesneného panela bez skla merajú, ako signál prichádza, s akým oneskorením a akou silou, a z toho vypočítame, kde je prst. Kód nám povie, ktorá rukavica to bola.",
+    p2: "Panel sa umiestni vedľa obrazovky, ktorú už máte, a nahradí dotykové alebo klávesnicové ovládanie. Displej aj počítač ostávajú. Prstene vo výrobe nepoužívame, pretože pri rotujúcich strojoch sú nebezpečné. Preto je vysielač v rukavici.",
     p3: "Princíp nadväzuje na SkinTrack, ktorý v roku 2016 publikovali výskumníci z Carnegie Mellon University a ktorý určoval polohu dotyku z fázy signálu šíriaceho sa telom. Otočili sme ho pre priemysel: vysielač v rukavici, senzory v paneli a vlastný kód pre každého operátora.",
   },
   name: {
-    title: "Hadō, vlna.",
-    text: "V japončine znamená 波動 vlnu alebo vlnenie. Je to odkaz na rádiové vlny, ktoré nesú každé stlačenie, a zároveň krátky názov, ktorý sa ľahko vysloví v akomkoľvek jazyku.",
+    title: "Prečo tento názov",
+    text: "V japončine znamená 波動 vlnu alebo vlnenie. Vybrali sme ho, lebo každé stlačenie putuje ako rádiová vlna, a tiež preto, že je krátky a ľahko sa vysloví v akomkoľvek jazyku.",
   },
   sites: {
-    title: "Najprv pre najstudenejšie a najmokrejšie panely.",
+    title: "Kde začíname",
     lead: "Začíname tam, kde sú rukavice najhrubšie, povrchy mokré a pri termináli nie sú rotujúce stroje.",
     items: [
       {
@@ -112,40 +112,40 @@ export const sk: Copy = {
       },
     ],
     later: {
-      when: "Neskôr · pre spotrebiteľov",
-      title: "Na vašej koži",
+      when: "Neskôr, verzia pre spotrebiteľov",
+      title: "Na chrbte ruky",
       text: "Prsteň vysiela signál a chrbát ruky sa stane touchpadom na ovládanie smart hodiniek, inteligentných okuliarov či slúchadiel bez dotyku. Je to pôvodný nápad SkinTrack a neskorší spotrebiteľský variant, nie náš prvý produkt.",
       note: "Prstene do priemyslu nepatria: pri rotujúcich strojoch hrozí strhnutie kože z prsta a zvyčajne sú zakázané, preto je priemyselný vysielač v rukavici.",
     },
   },
   benefits: {
-    title: "Čo sa zmení v prevádzke.",
+    title: "Čo to zmení pre operátorov",
     items: [
       {
         h: "Funguje cez hrubé rukavice",
         p: "Signál vychádza z vložky v rukavici, nie z kože dotýkajúcej sa skla, takže zateplené ani premočené rukavice nie sú prekážkou.",
       },
       {
-        h: "Kondenzát nestláča tlačidlá",
+        h: "Kondenzát nespúšťa stlačenia",
         p: "Voda, námraza ani rukáv, ktorý sa obtrie o panel, nevysielajú kód, takže nemôžu spustiť stlačenie.",
       },
       {
-        h: "Každé stlačenie má meno",
+        h: "Záznam, kto čo stlačil",
         p: "Každá rukavica má vlastný kód. Panel zaznamená, ktorý operátor čo stlačil, bez prikladania karty pri každej akcii.",
       },
-      { h: "Rozloženie definované softvérom", p: "Tlačidlá a zóny sa menia aktualizáciou softvéru, nie prerábaním klávesnice." },
+      { h: "Rozloženie sa nastavuje v softvéri", p: "Tlačidlá a zóny sa menia aktualizáciou softvéru, nie prerábaním klávesnice." },
       {
-        h: "Nikdy bezpečnostný obvod",
+        h: "Nie pre bezpečnostné obvody",
         p: "Hado slúži na ovládanie operátorom. Núdzové zastavenie ostáva pevne zapojené, ako vyžadujú EN 60204-1 a ISO 13850.",
       },
       {
-        h: "Záložné prihlásenie",
+        h: "Záložné prihlásenie PIN-om a kartou",
         p: "Chýba vložka alebo je vybitá batéria? Návštevy a údržba sa prihlásia PIN-om a kartou a pracujú ďalej.",
       },
     ],
   },
   tryIt: {
-    title: "Vyskúšajte to v mraziarenských rukaviciach.",
+    title: "Vyskúšajte si to",
     lead: "Tri tlačidlá, ako náš funkčný koncept. Stláčajte ich s každou technológiou a zapnite alebo vypnite hrubé rukavice a kondenzát.",
     techLabel: "Technológia",
     hado: "Hado",
@@ -160,7 +160,7 @@ export const sk: Copy = {
     note: "Chyby dotykovej obrazovky sú simulované, aby ukázali rozdiel. Nie sú to výsledky testov; priame porovnanie s dotykovou obrazovkou s režimom pre rukavice plánujeme na 1. štvrťrok 2027.",
   },
   savings: {
-    title: "Koľko vás stojí vyzliekanie rukavíc.",
+    title: "Koľko stojí vyzliekanie rukavíc",
     lead: "Každé vyzlečenie rukavice je prestávka a bezpečnostné riziko. Zadajte vlastné čísla a uvidíte, koľko času sa nazbiera. Je to odhad z vašich údajov, nie namerané dáta.",
     workers: "Pracovníci pri dotykových obrazovkách",
     removals: "Vyzlečenia rukavíc na pracovníka za zmenu",
@@ -172,7 +172,7 @@ export const sk: Copy = {
     paid: "v zaplatenom čase ročne",
   },
   pricing: {
-    title: "Panel, vložky do rukavíc a licencia pre prevádzku.",
+    title: "Ceny",
     lead: "Cieľové ceny, ktoré potvrdíme v platených pilotných projektoch. Vložky sa vymieňajú spolu s pracovnými rukavicami a licencia pre prevádzku pokrýva identifikáciu operátorov a záznamy stlačení.",
     items: [
       {
@@ -195,8 +195,8 @@ export const sk: Copy = {
       "Náklady na hardvér: materiál súčasného prototypu stojí približne 200 – 300 €. Cieľ pre sériovú výrobu je pod 150 € vďaka integrovanému viackanálovému prijímaču.",
   },
   status: {
-    title: "Laboratórny funkčný koncept, úprimne.",
-    lead: "Funkčný koncept dnes rozlíši tri dotykové zóny po päťminútovej kalibrácii, s jediným prijímačom zisku a fázy. Skôr než postavíme produkt, prejde testom, ktorý môže povedať nie.",
+    title: "Kde sme teraz",
+    lead: "Zatiaľ máme laboratórny funkčný koncept. Po päťminútovej kalibrácii rozlíši tri dotykové zóny a používa jediný prijímač zisku a fázy. Skôr než postavíme produkt, musí prejsť testom nižšie, a pokojne ním môže aj neprejsť.",
     photoAlt:
       "Funkčný koncept Hado na ruke: doska prijímača zisku a fázy AD8302 na chrbte ruky, prepojená so snímacími elektródami na náramku",
     photoCaption:
@@ -223,14 +223,14 @@ export const sk: Copy = {
     ],
   },
   pilot: {
-    title: "Pilotný projekt vo vašej mraziarni.",
+    title: "Pilotný projekt vo vašej mraziarni",
     text: "Hľadáme mraziarne, logistické areály a prístavy, kde operátori zápasia s dotykovými obrazovkami v hrubých rukaviciach. Povedzte nám o jednom paneli a rukaviciach, ktoré vaši ľudia nosia, a prídeme to s vami otestovať.",
     button: "Mám záujem o pilotný projekt",
     subject: "Záujem o pilotný projekt Hado",
     soon: "Kontaktné údaje čoskoro.",
   },
   team: {
-    title: "Ľudia za vlnou.",
+    title: "Tím",
     lead: "Malý tím z Bratislavy s koreňmi vo výskume robotiky. Hado vyvíja Cassava s. r. o.",
     members: [
       {
@@ -260,7 +260,7 @@ export const sk: Copy = {
     ],
   },
   faq: {
-    title: "Otázky.",
+    title: "Časté otázky",
     items: [
       {
         q: "Ako to funguje?",

@@ -9,7 +9,7 @@ const LANGS: Lang[] = ["en", "sk"];
 function LangSwitch() {
   const { lang, setLang, t } = useLang();
   return (
-    <div role="group" aria-label={t.nav.language} className="inline-flex overflow-hidden rounded-full border border-ink text-[13px] font-semibold">
+    <div role="group" aria-label={t.nav.language} className="inline-flex overflow-hidden rounded-md border border-ink text-[13px] font-semibold">
       {LANGS.map((l) => (
         <button
           key={l}
@@ -51,7 +51,7 @@ export function Nav() {
           </a>
         ))}
         <LangSwitch />
-        <a href="#pilot" className="rounded-full bg-ink px-4 py-2 text-sm font-medium whitespace-nowrap text-white no-underline">
+        <a href="#pilot" className="rounded-md bg-ink px-4 py-2 text-sm font-medium whitespace-nowrap text-white no-underline">
           {t.nav.pilot}
         </a>
       </div>
@@ -78,30 +78,34 @@ export function Hero({ reduced }: { reduced: boolean }) {
       <Suspense fallback={null}>
         <WaveField readout={readout} reduced={reduced} />
       </Suspense>
-      <header className="relative flex min-h-svh flex-col justify-start pt-32 md:justify-center md:pt-0">
-        <div className="wrap">
-          <p className="mb-6 animate-rise text-sm font-semibold tracking-wide text-mut">
-            <span className="font-jp" lang="ja">
-              波動
-            </span>{" "}
-            · hadō · {h.wave}
-          </p>
-          <h1 className="display m-0 mb-7 max-w-[9em] animate-rise text-[clamp(52px,9vw,136px)] leading-[.9] [animation-delay:.12s]">
-            {h.title}
-          </h1>
-          <p className="mb-8 max-w-[30em] animate-rise text-[clamp(17px,1.8vw,20px)] text-mut [animation-delay:.24s]">
-            {h.lead}
-          </p>
-          <div className="flex animate-rise flex-wrap gap-2.5 [animation-delay:.24s]">
-            <a href="#how" className="rounded-full bg-ink px-6.5 py-3.5 text-[15px] font-medium text-white no-underline transition-transform hover:-translate-y-0.5">
-              {h.ctaHow}
-            </a>
-            <a href="#pilot" className="rounded-full border border-ink px-6.5 py-3.5 text-[15px] font-medium text-ink no-underline transition-transform hover:-translate-y-0.5">
-              {h.ctaPilot}
-            </a>
+      {/* Text stays in the left half on desktop and the top half on phones; the wave field fills the other half. */}
+      <header className="relative flex min-h-svh flex-col justify-start pt-28 pb-10 lg:justify-center lg:pt-24">
+        <div className="wrap w-full">
+          <div className="lg:max-w-[52%]">
+            <p className="mb-5 animate-rise text-sm font-semibold tracking-wide text-mut">
+              <span className="font-jp" lang="ja">
+                波動
+              </span>{" "}
+              · hadō · {h.wave}
+            </p>
+            <h1 className="display m-0 mb-6 animate-rise text-[clamp(42px,5.6vw,84px)] leading-[.98] [animation-delay:.12s]">
+              {h.title}
+            </h1>
+            <p className="mb-8 max-w-[30em] animate-rise text-[clamp(16px,1.5vw,19px)] text-mut [animation-delay:.24s]">
+              {h.lead}
+            </p>
+            <div className="flex animate-rise flex-wrap gap-2.5 [animation-delay:.24s]">
+              <a href="#how" className="rounded-md bg-ink px-6.5 py-3.5 text-[15px] font-medium text-white no-underline transition-transform hover:-translate-y-0.5">
+                {h.ctaHow}
+              </a>
+              <a href="#pilot" className="rounded-md border border-ink px-6.5 py-3.5 text-[15px] font-medium text-ink no-underline transition-transform hover:-translate-y-0.5">
+                {h.ctaPilot}
+              </a>
+            </div>
           </div>
 
-          <div className="mt-9 w-auto animate-rise rounded-[18px] border border-line bg-pan p-5 text-sm tabular-nums backdrop-blur-lg [animation-delay:.5s] md:absolute md:right-7 md:bottom-7 md:mt-0 md:w-[310px]">
+          {/* The readout explains pointer interaction, so it only shows where there is a pointer and room beside the field. */}
+          <div className="hidden animate-rise rounded-lg border border-line bg-pan p-4 text-[13px] tabular-nums backdrop-blur-lg [animation-delay:.5s] lg:absolute lg:right-7 lg:bottom-7 lg:block lg:w-[270px]">
             <b className="mb-2.5 block text-[12.5px] font-medium text-mut">{h.readoutTitle}</b>
             {rows.map(([name, key, initial]) => (
               <div key={key} className="flex justify-between border-t border-line py-1.5">

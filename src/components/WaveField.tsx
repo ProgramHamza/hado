@@ -14,6 +14,12 @@ const SENSORS: [number, number][] = [
   [-FIELD_W / 2, 2.4],
 ];
 
+/** At this width and up the hero is two columns: text left, field right. */
+const WIDE_MIN_PX = 1024;
+/** Camera distance and screen-fraction shift of the field per layout. */
+const WIDE = { camZ: 27, shiftX: 0.3, shiftY: -0.06 };
+const NARROW = { camZ: 27, shiftX: 0, shiftY: 0.33 };
+
 const VERTEX = `
 uniform vec2 uT; uniform float uTime; uniform float uPx; varying float vI;
 void main(){
@@ -117,6 +123,12 @@ export function WaveField({ readout, reduced }: { readout: React.RefObject<Reado
 
     const target = new THREE.Vector2(2.5, 0.5);
     const cur = new THREE.Vector2(2.5, 0.5);
+    const pointerNdc = new THREE.Vector2();
+    const ray = new THREE.Raycaster();
+    const plane = new THREE.Plane();
+    const hit = new THREE.Vector3();
+    const planeNormal = new THREE.Vector3();
+    let hasPointer = false;
     let mx = 0;
     let my = 0;
     let scrollV = 0;
@@ -128,22 +140,33 @@ export function WaveField({ readout, reduced }: { readout: React.RefObject<Reado
     const resize = () => {
       const w = window.innerWidth;
       const h = window.innerHeight;
+      const layout = w >= WIDE_MIN_PX ? WIDE : NARROW;
       renderer.setSize(w, h, false);
       cam.aspect = w / h;
-      cam.position.set(0, 0, w < 800 ? 27 : 20);
+      cam.position.set(0, 0, layout.camZ);
+      // Shift the field off-centre so it sits beside (desktop) or below (phone) the hero text.
+      cam.setViewOffset(w, h, -w * layout.shiftX, -h * layout.shiftY, w, h);
       uniforms.uPx.value = (renderer.getPixelRatio() * h) / 900;
       cam.updateProjectionMatrix();
     };
     const onPointer = (e: PointerEvent) => {
       idle = false;
-      const nx = e.clientX / window.innerWidth - 0.5;
-      const ny = e.clientY / window.innerHeight - 0.5;
-      mx = nx;
-      my = ny;
-      const s = cam.position.z > 22 ? 1.05 : 0.78;
-      target.set(nx * FIELD_W * s * 1.1, -ny * FIELD_H * s * 1.2);
-      target.x = Math.max(-FIELD_W / 2 + 0.8, Math.min(FIELD_W / 2 - 0.8, target.x));
-      target.y = Math.max(-FIELD_H / 2 + 0.5, Math.min(FIELD_H / 2 - 0.5, target.y));
+      hasPointer = true;
+      mx = e.clientX / window.innerWidth - 0.5;
+      my = e.clientY / window.innerHeight - 0.5;
+      pointerNdc.set(mx * 2, -my * 2);
+    };
+    // Project the pointer onto the tilted field so the touch ring sits under the cursor.
+    const aimAtPointer = () => {
+      ray.setFromCamera(pointerNdc, cam);
+      planeNormal.set(0, 0, 1).transformDirection(rig.matrixWorld);
+      plane.setFromNormalAndCoplanarPoint(planeNormal, rig.getWorldPosition(hit));
+      if (!ray.ray.intersectPlane(plane, hit)) return;
+      rig.worldToLocal(hit);
+      target.set(
+        Math.max(-FIELD_W / 2 + 0.8, Math.min(FIELD_W / 2 - 0.8, hit.x)),
+        Math.max(-FIELD_H / 2 + 0.5, Math.min(FIELD_H / 2 - 0.5, hit.y)),
+      );
     };
     const onScroll = () => {
       scrollV = window.scrollY / window.innerHeight;
@@ -152,6 +175,7 @@ export function WaveField({ readout, reduced }: { readout: React.RefObject<Reado
     const render = (now: number) => {
       const t = (now - t0) / 1000;
       if (idle) target.set(3.2 + Math.sin(t * 0.5) * 2.8, Math.sin(t * 0.8) * 1.8);
+      else if (hasPointer) aimAtPointer();
       cur.lerp(target, 0.08);
       uniforms.uT.value.copy(cur);
       uniforms.uTime.value = reduced ? 0 : t;

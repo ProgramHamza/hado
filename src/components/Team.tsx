@@ -4,7 +4,7 @@ import { useLang } from "../i18n";
 function Portrait({ p, alt }: { p: Person; alt: string }) {
   if (p.photo) {
     return (
-      <div className="mb-6 aspect-[4/3] overflow-hidden rounded-[22px] bg-ink/5">
+      <div className="mb-6 aspect-[4/3] overflow-hidden rounded-lg bg-ink/5">
         <img
           src={p.photo}
           alt={alt}
@@ -18,7 +18,7 @@ function Portrait({ p, alt }: { p: Person; alt: string }) {
   return (
     <div
       aria-hidden="true"
-      className="display mb-6 grid aspect-[4/3] place-items-center rounded-[22px] border border-line text-[64px] leading-none"
+      className="display mb-6 grid aspect-[4/3] place-items-center rounded-lg border border-line text-[64px] leading-none"
     >
       {p.initials}
     </div>
@@ -30,7 +30,7 @@ export function Team() {
   return (
     <section id="team" className="py-[clamp(90px,13vw,180px)]">
       <div className="wrap">
-        <h2 className="display m-0 mb-6.5 max-w-[11em] text-[clamp(40px,6vw,84px)] leading-[.96]">{t.team.title}</h2>
+        <h2 className="display m-0 mb-6.5 max-w-[11em] text-[clamp(34px,4.4vw,60px)] leading-[.96]">{t.team.title}</h2>
         <p className="mb-4 max-w-[34em] text-mut">{t.team.lead}</p>
         <div className="mt-12 grid gap-12 md:grid-cols-2 md:gap-16">
           {PEOPLE.map((p, i) => {

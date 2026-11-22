@@ -1,7 +1,7 @@
 import { useLang } from "../i18n";
 
 const section = "py-[clamp(90px,13vw,180px)]";
-const h2 = "display m-0 mb-6.5 max-w-[11em] text-[clamp(40px,6vw,84px)] leading-[.96]";
+const h2 = "display m-0 mb-6.5 max-w-[11em] text-[clamp(34px,4.4vw,60px)] leading-[.96]";
 
 export function How() {
   const { t } = useLang();
@@ -54,7 +54,7 @@ export function Sites() {
           ))}
         </div>
         {/* Clearly secondary consumer variant: ring emitter, back of the hand as the pad. */}
-        <aside className="mt-16 grid gap-6 rounded-[28px] border border-dashed border-line p-7 md:grid-cols-[auto_1fr] md:gap-12 md:p-9">
+        <aside className="mt-16 grid gap-6 rounded-xl border border-dashed border-line p-7 md:grid-cols-[auto_1fr] md:gap-12 md:p-9">
           <div>
             <div className="mb-2 text-[14.5px] font-semibold text-mut">{s.later.when}</div>
             <h3 className="display m-0 text-[clamp(30px,3.4vw,40px)] leading-none text-mut">{s.later.title}</h3>

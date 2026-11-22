@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { useLang } from "../i18n";
 
 const section = "py-[clamp(90px,13vw,180px)]";
-const h2 = "display m-0 mb-6.5 max-w-[11em] text-[clamp(40px,6vw,84px)] leading-[.96]";
+const h2 = "display m-0 mb-6.5 max-w-[11em] text-[clamp(34px,4.4vw,60px)] leading-[.96]";
 const KEYS = ["A", "B", "C"] as const;
 type Tech = "hado" | "glass";
 type Flash = { i: number; kind: "on" | "ghost" } | null;
@@ -49,7 +49,7 @@ export function TryIt() {
         <div>
           <h2 className={h2}>{c.title}</h2>
           <p className="mb-4 text-mut">{c.lead}</p>
-          <div className="mt-2 mb-4 inline-flex overflow-hidden rounded-full border border-ink" role="group" aria-label={c.techLabel}>
+          <div className="mt-2 mb-4 inline-flex overflow-hidden rounded-md border border-ink" role="group" aria-label={c.techLabel}>
             {(
               [
                 ["hado", c.hado],
@@ -76,7 +76,7 @@ export function TryIt() {
           </p>
           <p className="text-[14.5px] text-mut">{c.note}</p>
         </div>
-        <div className={`grid grid-cols-3 gap-3.5 rounded-[28px] border border-line bg-pan p-7 ${wet ? "pad-wet" : ""}`}>
+        <div className={`grid grid-cols-3 gap-3.5 rounded-xl border border-line bg-pan p-7 ${wet ? "pad-wet" : ""}`}>
           {KEYS.map((k, i) => {
             const state = flash?.i === i ? flash.kind : null;
             return (
@@ -85,7 +85,7 @@ export function TryIt() {
                 type="button"
                 onClick={() => press(i)}
                 className={[
-                  "display aspect-square cursor-pointer rounded-[20px] border text-[52px] transition-colors duration-100",
+                  "display aspect-square cursor-pointer rounded-lg border text-[52px] transition-colors duration-100",
                   state === "on" ? "border-ink bg-ink text-white" : "",
                   state === "ghost" ? "border-sig bg-sig text-white" : "",
                   state === null ? "border-ink bg-transparent text-ink" : "",
@@ -170,7 +170,7 @@ export function Savings() {
             <p className="text-[14.5px] text-mut">{c.assumes}</p>
           </div>
           <div className="border-t border-ink pt-5.5">
-            <div className="display text-[clamp(64px,9vw,128px)] leading-[.95] tracking-[-.03em] tabular-nums">
+            <div className="display text-[clamp(52px,7vw,96px)] leading-[.95] tracking-[-.03em] tabular-nums">
               {Math.round(hours).toLocaleString(t.locale)}
             </div>
             <p className="m-0 text-mut">{c.hours}</p>

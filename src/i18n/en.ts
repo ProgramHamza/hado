@@ -18,8 +18,8 @@ export const en = {
   },
   hero: {
     wave: "wave",
-    title: "Press through the thickest gloves.",
-    lead: "Hado is a sealed, glass-free control panel for cold stores, yards and wet sites. An insert in the work glove sends a coded signal, so the panel knows where you press and who pressed it. Gloves stay on.",
+    title: "Controls that work in freezer gloves",
+    lead: "Hado is a sealed control panel with no glass screen, made for cold stores, yards and wet sites. A small insert in the work glove sends a coded radio signal. From it the panel works out where you pressed and whose glove it was, so nobody has to take their gloves off.",
     ctaHow: "See how it works",
     ctaPilot: "Run a pilot",
     readoutTitle: "Sensor model. Move your pointer over the field.",
@@ -30,7 +30,7 @@ export const en = {
     readoutNote: "An illustration of the principle, not live data.",
   },
   intro: {
-    lines: ["Keep the gloves on.", "Nothing to fog, crack or freeze.", "Every press signed by the glove that made it."],
+    lines: ["No more taking gloves off to press a button.", "No glass to fog up or crack.", "And you know who pressed what."],
     stats: [
       {
         pre: "",
@@ -49,17 +49,17 @@ export const en = {
   story: {
     aria: "Scroll animation of the Hado signal path",
     captions: [
-      { h: "The glove sends.", p: "An insert sewn into the work glove emits a coded signal in a licence-free radio band." },
+      { h: "The glove sends a signal", p: "An insert sewn into the work glove emits a coded signal in a licence-free radio band." },
       {
-        h: "The panel compares.",
+        h: "The panel works out the position",
         p: "Each sensor at the edge of the sealed panel sees the signal slightly later and weaker. Phase and magnitude give the position. Move your pointer over the panel to press it yourself.",
       },
       {
-        h: "Frost and water do not matter.",
-        p: "In the cold and wet, a glass screen fogs and invents touches. The coded signal does not care how thick the glove is.",
+        h: "Frost and water don't trigger it",
+        p: "In the cold and wet, a glass screen fogs up and registers touches nobody made. The coded signal works the same whatever the glove thickness.",
       },
       {
-        h: "Every press has a name.",
+        h: "Each glove has its own code",
         p: "Each glove carries its own code, so the panel logs who pressed what. Move your pointer to press.",
       },
     ],
@@ -76,17 +76,17 @@ export const en = {
     },
   },
   how: {
-    title: "One glove talks. The panel listens.",
-    p1: "A small insert sewn into company-issued work gloves sends a coded signal in a licence-free ISM band (13.56 or 40.68 MHz). Sensors around a sealed, glass-free panel measure how the signal arrives, how late and how weak, and the position of the fingertip falls out of the maths. The code says which glove it was.",
-    p2: "The panel sits next to the screen you already have and replaces the touch or keypad input. The display and the computer stay as they are. No rings on the factory floor: near rotating machinery they are a hazard, so the emitter lives in the glove.",
-    p3: "The principle builds on SkinTrack, published by Carnegie Mellon researchers in 2016, which located touches from the phase of a signal travelling through the body. We turned it around for industry: emitter in the glove, sensors in the panel, a code per operator.",
+    title: "How it works",
+    p1: "A small insert sewn into company-issued work gloves sends a coded signal in a licence-free ISM band (13.56 or 40.68 MHz). Sensors around a sealed, glass-free panel measure how the signal arrives, how late and how weak, and from that we calculate where the fingertip is. The code tells us which glove it was.",
+    p2: "The panel sits next to the screen you already have and replaces the touch or keypad input. The display and the computer stay as they are. We don't use rings on the factory floor because they are dangerous near rotating machinery. That's why the emitter is in the glove.",
+    p3: "The principle builds on SkinTrack, published by Carnegie Mellon researchers in 2016, which located touches from the phase of a signal travelling through the body. We flipped it around for industry: emitter in the glove, sensors in the panel, a code per operator.",
   },
   name: {
-    title: "Hadō, a wave.",
-    text: "In Japanese, 波動 means wave, or wave motion. It is a nod to the radio waves that carry every press, and a name that is short and easy to say in any language.",
+    title: "Why the name",
+    text: "In Japanese, 波動 means wave, or wave motion. We picked it because every press travels as a radio wave, and because it's short and easy to say in any language.",
   },
   sites: {
-    title: "Built for the coldest, wettest panels first.",
+    title: "Where we start",
     lead: "We start where gloves are thickest, surfaces are wet and there is no rotating machinery at the terminal.",
     items: [
       {
@@ -106,40 +106,40 @@ export const en = {
       },
     ],
     later: {
-      when: "Later · consumer",
-      title: "On your skin",
+      when: "Later, consumer version",
+      title: "On the back of your hand",
       text: "A ring sends the signal and the back of your hand becomes the touchpad, to control a smartwatch, smart glasses or earbuds without touching them. This is the original SkinTrack idea and a later consumer variant, not our first product.",
       note: "Rings stay out of industry: near rotating machinery they are a degloving hazard and usually banned, so the industrial emitter lives in the glove.",
     },
   },
   benefits: {
-    title: "What changes on the floor.",
+    title: "What it changes for operators",
     items: [
       {
         h: "Works through thick gloves",
         p: "The signal comes from the glove insert, not from skin touching glass, so insulated and soaked gloves are not the limit.",
       },
       {
-        h: "Condensation does not press buttons",
+        h: "Condensation doesn't trigger presses",
         p: "Water, frost and a sleeve brushing the panel emit no code, so they cannot trigger a press.",
       },
       {
-        h: "Every press has a name",
+        h: "Logs who pressed what",
         p: "Each glove carries its own code. The panel logs which operator pressed what, with no badge tap per action.",
       },
-      { h: "Software-defined layout", p: "Buttons and zones change with a software update, not a rewired keypad." },
+      { h: "Layout set in software", p: "Buttons and zones change with a software update, not a rewired keypad." },
       {
-        h: "Never a safety circuit",
+        h: "Not for safety circuits",
         p: "Hado is an operator input. Emergency stops stay hardwired, as EN 60204-1 and ISO 13850 require.",
       },
       {
-        h: "Fallback built in",
+        h: "PIN and badge fallback",
         p: "No glove insert or a flat battery? Visitors and maintenance log in with PIN and badge and keep working.",
       },
     ],
   },
   tryIt: {
-    title: "Try it in freezer gloves.",
+    title: "Try it yourself",
     lead: "Three buttons, like our proof of concept. Press them with each technology, then turn thick gloves and condensation on or off.",
     techLabel: "Technology",
     hado: "Hado",
@@ -154,7 +154,7 @@ export const en = {
     note: "The touchscreen's errors are simulated to show the contrast. They are not test data; our head-to-head test against a glove-mode touchscreen is planned for Q1 2027.",
   },
   savings: {
-    title: "What taking gloves off costs you.",
+    title: "What taking gloves off costs",
     lead: "Every glove removal is a pause and a safety risk. Set your own numbers to see the time it adds up to. This is an estimate from your inputs, not measured data.",
     workers: "Workers on touchscreens",
     removals: "Glove removals per worker per shift",
@@ -166,7 +166,7 @@ export const en = {
     paid: "in paid time, per year",
   },
   pricing: {
-    title: "A panel, glove inserts and a site licence.",
+    title: "Pricing",
     lead: "Target prices, to be confirmed in paid pilots. The inserts are replaced together with the work gloves, and the site licence covers operator identification and press logs.",
     items: [
       {
@@ -185,8 +185,8 @@ export const en = {
       "Hardware cost: the current prototype bill of materials is about 200–300 €. The series target is under 150 €, by moving to an integrated multi-channel receiver.",
   },
   status: {
-    title: "A lab proof of concept, honestly.",
-    lead: "Today the proof of concept tells three touch zones apart after a five-minute calibration, on a single gain and phase receiver. Before we build a product, we put it through a test that can say no.",
+    title: "Where we are now",
+    lead: "Right now we have a lab proof of concept. It tells three touch zones apart after five minutes of calibration, using a single gain and phase receiver. Before we build a product, it has to pass the test below, and it is allowed to fail.",
     photoAlt:
       "Hado proof of concept worn on the hand: an AD8302 gain and phase receiver board on the back of the hand, wired to sensor electrodes on a wristband",
     photoCaption:
@@ -213,14 +213,14 @@ export const en = {
     ],
   },
   pilot: {
-    title: "Run a pilot in your cold store.",
+    title: "Pilot it in your cold store",
     text: "We are looking for cold-storage, logistics and port sites where operators fight touchscreens in thick gloves. Tell us about one panel and the gloves your people wear, and we will come and test it with you.",
     button: "Register pilot interest",
     subject: "Hado pilot interest",
     soon: "Contact details coming soon.",
   },
   team: {
-    title: "The people behind the wave.",
+    title: "Team",
     lead: "A small team from Bratislava, Slovakia, with roots in robotics research. Hado is developed by Cassava s. r. o.",
     members: [
       {
@@ -250,7 +250,7 @@ export const en = {
     ],
   },
   faq: {
-    title: "Questions.",
+    title: "FAQ",
     items: [
       {
         q: "How does it work?",

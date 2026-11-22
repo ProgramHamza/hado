@@ -6,9 +6,9 @@ export function Status() {
   const s = t.status;
   return (
     <section id="status" className="pb-[clamp(90px,13vw,180px)]">
-      <div className="relative mx-2 rounded-[36px] bg-ink py-[clamp(48px,8vw,110px)] text-white md:mx-4">
+      <div className="relative mx-2 rounded-xl bg-ink py-[clamp(48px,8vw,110px)] text-white md:mx-4">
         <div className="wrap">
-          <h2 className="display m-0 mb-6.5 max-w-[11em] text-[clamp(40px,6vw,84px)] leading-[.96] text-white">
+          <h2 className="display m-0 mb-6.5 max-w-[11em] text-[clamp(34px,4.4vw,60px)] leading-[.96] text-white">
             {s.title}
           </h2>
           <div className="grid items-start gap-10 md:grid-cols-[1fr_minmax(0,360px)] md:gap-16">
@@ -18,7 +18,7 @@ export function Status() {
                 src={PROTOTYPE_PHOTO_SRC}
                 alt={s.photoAlt}
                 loading="lazy"
-                className="aspect-[4/5] w-full rounded-[22px] object-cover object-[50%_62%]"
+                className="aspect-[4/5] w-full rounded-lg object-cover object-[50%_62%]"
               />
               <figcaption className="mt-3 text-[13.5px] text-mut-dark">{s.photoCaption}</figcaption>
             </figure>
@@ -62,14 +62,14 @@ export function Pilot() {
     <section id="pilot" className="py-[clamp(90px,13vw,180px)]">
       <div className="wrap grid items-end gap-10 md:grid-cols-[1.4fr_1fr] md:gap-16">
         <div>
-          <h2 className="display m-0 mb-6.5 max-w-[11em] text-[clamp(40px,6vw,84px)] leading-[.96]">{t.pilot.title}</h2>
+          <h2 className="display m-0 mb-6.5 max-w-[11em] text-[clamp(34px,4.4vw,60px)] leading-[.96]">{t.pilot.title}</h2>
           <p className="m-0 max-w-[34em] text-mut">{t.pilot.text}</p>
         </div>
         <div className="border-t border-ink pt-5.5">
           {email ? (
             <a
               href={`mailto:${email}?subject=${encodeURIComponent(t.pilot.subject)}`}
-              className="inline-block rounded-full bg-ink px-6.5 py-3.5 text-[15px] font-medium text-white no-underline transition-transform hover:-translate-y-0.5"
+              className="inline-block rounded-md bg-ink px-6.5 py-3.5 text-[15px] font-medium text-white no-underline transition-transform hover:-translate-y-0.5"
             >
               {t.pilot.button}
             </a>
@@ -88,7 +88,7 @@ export function Faq() {
   return (
     <section id="faq" className="py-[clamp(90px,13vw,180px)]">
       <div className="wrap faq grid items-start gap-10 md:grid-cols-2 md:gap-16">
-        <h2 className="display m-0 text-[clamp(40px,6vw,84px)] leading-[.96]">{t.faq.title}</h2>
+        <h2 className="display m-0 text-[clamp(34px,4.4vw,60px)] leading-[.96]">{t.faq.title}</h2>
         <div>
           {t.faq.items.map(({ q, a }) => (
             <details key={q} className="border-t border-line last:border-b">
