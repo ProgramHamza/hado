@@ -9,8 +9,11 @@ export const FACTS = {
   testErrorMm: 10,
   hmiMarketUsdB: 5.5,
   studyUrl: "https://yangzhang.dev/research/SkinTrack/SkinTrack.pdf",
-  /** Pilot contact. Leave empty until a real address is chosen; the CTA button hides itself. */
-  contactEmail: "",
+  /**
+   * Web3Forms access key for the pilot form. Public by design: it only delivers to the inbox it was
+   * issued for and never reveals that address. Empty = the form shows a "not connected yet" note.
+   */
+  contactFormKey: "",
 } as const;
 
 /** Stats in the intro, in the same order as `intro.stats` in the copy files. */
@@ -34,6 +37,7 @@ export type Person = {
 export const PEOPLE: Person[] = [
   { name: "Marek Hromada", initials: "MH", photo: "/team/marek.jpg", photoPosition: "55% 52%" },
   { name: "Adam Daniel Donoval", initials: "AD", photo: "/team/adam.jpg", photoPosition: "46% 28%" },
+  { name: "Teo Višňovský", initials: "TV" },
 ];
 
 export const PROTOTYPE_PHOTO_SRC = "/prototype/proof-of-concept.jpg";

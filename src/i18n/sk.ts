@@ -225,16 +225,22 @@ export const sk: Copy = {
   pilot: {
     title: "Pilotný projekt vo vašej mraziarni",
     text: "Hľadáme mraziarne, logistické areály a prístavy, kde operátori zápasia s dotykovými obrazovkami v hrubých rukaviciach. Povedzte nám o jednom paneli a rukaviciach, ktoré vaši ľudia nosia, a prídeme to s vami otestovať.",
-    button: "Mám záujem o pilotný projekt",
+    emailLabel: "Váš pracovný e-mail",
+    messageLabel: "Správa",
+    messagePlaceholder: "O akú prevádzku a panel ide a aké rukavice vaši ľudia nosia.",
+    send: "Odoslať správu",
+    sending: "Odosiela sa…",
+    sent: "Ďakujeme, správa bola odoslaná. Odpovieme na e-mail, ktorý ste zadali.",
+    error: "Niečo sa pokazilo a správa sa neodoslala. Skúste to prosím o chvíľu znova.",
+    offline: "Kontaktný formulár ešte nie je pripojený. Skúste to prosím čoskoro.",
     subject: "Záujem o pilotný projekt Hado",
-    soon: "Kontaktné údaje čoskoro.",
   },
   team: {
     title: "Tím",
     lead: "Malý tím z Bratislavy s koreňmi vo výskume robotiky. Hado vyvíja Cassava s. r. o.",
     members: [
       {
-        role: "Hlavný inžinier a vývojár",
+        role: "CTO",
         photoAlt: "Marek Hromada na MILSET ESE 2026 so svojím projektom bionickej ruky",
         bio: "Vyvíja hardvér Hado, spracovanie signálu a algoritmy na rozpoznávanie dotyku.",
         highlights: [
@@ -247,14 +253,27 @@ export const sk: Copy = {
         ],
       },
       {
-        role: "Spoluzakladateľ, obchod",
+        role: "Spoluzakladateľ, CFO",
         photoAlt: "Adam Daniel Donoval",
-        bio: "Spoluzakladateľ a konateľ spoločnosti Cassava s. r. o. Vedie rozhovory so zákazníkmi z mraziarní, logistiky a výroby strojov, partnerstvá a rokovania s investormi.",
+        bio: "Spoluzakladateľ a konateľ spoločnosti Cassava s. r. o. Má na starosti financie, rozpočty, žiadosti o granty a rokovania s investormi.",
         highlights: [
           "Spoluzakladateľ Papaya International, mládežníckej neziskovej organizácie s projektmi Erasmus+ po celej Európe: písanie grantov, partnerstvá a rozpočty",
           "Vybraný do programov Future Founders od The Spot a bratislavského pilotu InVenture Mind, podnikateľského programu Georgia Tech",
           "Dvojnásobný víťaz Noove Challenge a víťaz BARS5, súťaže Slovenskej akadémie vied; bronzová medaila zo zimnej výzvy Medzinárodnej ekonomickej olympiády",
           "Študoval podnikanie a ekonómiu vo Viedni a vo Veľkej Británii; pracuje po slovensky, anglicky a nemecky",
+        ],
+      },
+      {
+        role: "Spoluzakladateľ, COO",
+        photoAlt: "Teo Višňovský",
+        bio: "Spoluzakladateľ a konateľ spoločnosti Cassava s. r. o. Vedie prevádzku: pilotné projekty, dodávateľov a rozhovory so zákazníkmi z mraziarní a logistiky.",
+        highlights: [
+          "Softvérový inžinier v Aerostacks: zbiera a analyzuje dáta z dronu na predpovedanie lavínového rizika",
+          "Spoluzakladateľ Papaya International, mládežníckej neziskovej organizácie s projektmi po celej Európe",
+          "Vybraný do programu Future Founders od The Spot",
+          "Zástupca generálneho tajomníka pre IT na AproMUN, študentskej konferencii Model OSN v Bratislave",
+          "Doučuje matematiku a fyziku na doučma.sk a dobrovoľne pomáha v P-MAT",
+          "Študoval v Brisbane v Austrálii a na Sir Karl Popper Schule vo Viedni; hovorí po slovensky, anglicky a čiastočne nemecky a španielsky",
         ],
       },
     ],

@@ -1,5 +1,6 @@
 import { FACTS, PROTOTYPE_PHOTO_SRC } from "../content";
 import { useLang } from "../i18n";
+import { ContactForm } from "./ContactForm";
 
 export function Status() {
   const { t } = useLang();
@@ -57,26 +58,15 @@ export function Status() {
 
 export function Pilot() {
   const { t } = useLang();
-  const email = FACTS.contactEmail;
   return (
     <section id="pilot" className="py-[clamp(90px,13vw,180px)]">
-      <div className="wrap grid items-end gap-10 md:grid-cols-[1.4fr_1fr] md:gap-16">
+      <div className="wrap grid items-start gap-10 md:grid-cols-[1.2fr_1fr] md:gap-16">
         <div>
           <h2 className="display m-0 mb-6.5 max-w-[11em] text-[clamp(34px,4.4vw,60px)] leading-[.96]">{t.pilot.title}</h2>
           <p className="m-0 max-w-[34em] text-mut">{t.pilot.text}</p>
         </div>
         <div className="border-t border-ink pt-5.5">
-          {email ? (
-            <a
-              href={`mailto:${email}?subject=${encodeURIComponent(t.pilot.subject)}`}
-              className="inline-block rounded-md bg-ink px-6.5 py-3.5 text-[15px] font-medium text-white no-underline transition-transform hover:-translate-y-0.5"
-            >
-              {t.pilot.button}
-            </a>
-          ) : (
-            <p className="m-0 text-mut">{t.pilot.soon}</p>
-          )}
-          {email && <p className="mt-3 mb-0 text-[14.5px] text-mut">{email}</p>}
+          <ContactForm />
         </div>
       </div>
     </section>

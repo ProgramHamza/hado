@@ -32,7 +32,7 @@ export function Team() {
       <div className="wrap">
         <h2 className="display m-0 mb-6.5 max-w-[11em] text-[clamp(34px,4.4vw,60px)] leading-[.96]">{t.team.title}</h2>
         <p className="mb-4 max-w-[34em] text-mut">{t.team.lead}</p>
-        <div className="mt-12 grid gap-12 md:grid-cols-2 md:gap-16">
+        <div className="mt-12 grid gap-12 md:grid-cols-2 md:gap-12 lg:grid-cols-3">
           {PEOPLE.map((p, i) => {
             const m = t.team.members[i];
             return (

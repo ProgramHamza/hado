@@ -215,16 +215,22 @@ export const en = {
   pilot: {
     title: "Pilot it in your cold store",
     text: "We are looking for cold-storage, logistics and port sites where operators fight touchscreens in thick gloves. Tell us about one panel and the gloves your people wear, and we will come and test it with you.",
-    button: "Register pilot interest",
+    emailLabel: "Your work email",
+    messageLabel: "Message",
+    messagePlaceholder: "Which site and panel, and what gloves your people wear.",
+    send: "Send message",
+    sending: "Sending…",
+    sent: "Thanks, your message has been sent. We'll reply to the email you gave us.",
+    error: "Something went wrong and the message wasn't sent. Please try again in a minute.",
+    offline: "The contact form isn't connected yet. Please check back soon.",
     subject: "Hado pilot interest",
-    soon: "Contact details coming soon.",
   },
   team: {
     title: "Team",
     lead: "A small team from Bratislava, Slovakia, with roots in robotics research. Hado is developed by Cassava s. r. o.",
     members: [
       {
-        role: "Lead engineer and developer",
+        role: "CTO",
         photoAlt: "Marek Hromada at MILSET ESE 2026 with his bionic hand project",
         bio: "Builds the Hado hardware, the signal processing and the touch-detection algorithms.",
         highlights: [
@@ -237,14 +243,27 @@ export const en = {
         ],
       },
       {
-        role: "Co-founder, sales",
+        role: "Co-founder, CFO",
         photoAlt: "Adam Daniel Donoval",
-        bio: "Co-founder and managing director of Cassava s. r. o. Leads customer discovery with cold stores, logistics sites and machine builders, partnerships and investor conversations.",
+        bio: "Co-founder and managing director of Cassava s. r. o. Handles finance, budgets, grant applications and investor conversations.",
         highlights: [
           "Co-founder of Papaya International, a youth non-profit running Erasmus+ projects across Europe: grant writing, partnerships and budgets",
           "Selected for Future Founders by The Spot and the Bratislava pilot of InVenture Mind, Georgia Tech's entrepreneurship programme",
           "Two-time winner of the Noove Challenge and winner of BARS5, a Slovak Academy of Sciences competition; bronze medal at the International Economics Olympiad winter challenge",
           "Studied business and economics in Vienna and the UK; works in Slovak, English and German",
+        ],
+      },
+      {
+        role: "Co-founder, COO",
+        photoAlt: "Teo Višňovský",
+        bio: "Co-founder and managing director of Cassava s. r. o. Runs operations: pilot sites, suppliers and customer discovery with cold stores and logistics sites.",
+        highlights: [
+          "Software engineer at Aerostacks, collecting and analysing drone data to predict avalanche risk",
+          "Co-founder of Papaya International, a youth non-profit running projects across Europe",
+          "Selected for Future Founders by The Spot",
+          "Under-secretary-general for IT at AproMUN, a student Model UN conference in Bratislava",
+          "Maths and physics tutor at doučma.sk and P-MAT volunteer",
+          "Studied in Brisbane, Australia and at the Sir Karl Popper Schule in Vienna; speaks Slovak, English, some German and Spanish",
         ],
       },
     ],
