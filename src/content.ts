@@ -59,7 +59,6 @@ export const TEAM: Member[] = [
     photoAlt: "Adam Daniel Donoval",
     bio: "Co-founder and managing director of Cassava s. r. o. Leads customer discovery with cold stores, logistics sites and machine builders, partnerships and investor conversations.",
     highlights: [
-      "Head of Sales and Business Development at SoilScale, an AI crop-monitoring startup",
       "Co-founder of Papaya International, a youth non-profit running Erasmus+ projects across Europe: grant writing, partnerships and budgets",
       "Selected for Future Founders by The Spot and the Bratislava pilot of InVenture Mind, Georgia Tech's entrepreneurship programme",
       "Two-time winner of the Noove Challenge and winner of BARS5, a Slovak Academy of Sciences competition; bronze medal at the International Economics Olympiad winter challenge",
