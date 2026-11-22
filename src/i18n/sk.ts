@@ -233,6 +233,8 @@ export const sk: Copy = {
     sent: "Ďakujeme, správa bola odoslaná. Odpovieme na e-mail, ktorý ste zadali.",
     error: "Niečo sa pokazilo a správa sa neodoslala. Skúste to prosím o chvíľu znova.",
     offline: "Kontaktný formulár ešte nie je pripojený. Skúste to prosím čoskoro.",
+    cooldown: "Vaša správa už bola odoslaná. Ďalšiu môžete poslať o minútu.",
+    tooManyLinks: "Odstráňte prosím zo správy niektoré odkazy a skúste to znova.",
     subject: "Záujem o pilotný projekt Hado",
   },
   team: {

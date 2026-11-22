@@ -223,6 +223,8 @@ export const en = {
     sent: "Thanks, your message has been sent. We'll reply to the email you gave us.",
     error: "Something went wrong and the message wasn't sent. Please try again in a minute.",
     offline: "The contact form isn't connected yet. Please check back soon.",
+    cooldown: "Your message was already sent. Please wait a minute before sending another one.",
+    tooManyLinks: "Please remove some links from the message and try again.",
     subject: "Hado pilot interest",
   },
   team: {

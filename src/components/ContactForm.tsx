@@ -1,4 +1,4 @@
-import { useState, type FormEvent } from "react";
+import { useRef, useState, type FormEvent } from "react";
 import { FACTS } from "../content";
 import { useLang } from "../i18n";
 
@@ -6,8 +6,31 @@ const ENDPOINT = "https://api.web3forms.com/submit";
 const MESSAGE_MIN = 10;
 const MESSAGE_MAX = 3000;
 const EMAIL_MAX = 254;
+/** Spam guards: people need a few seconds to type, bots fire instantly and in bursts. */
+const MIN_FILL_MS = 3000;
+const COOLDOWN_MS = 60_000;
+const MAX_LINKS = 2;
+const LAST_SENT_KEY = "hado-form-last-sent";
 
-type Status = "idle" | "sending" | "sent" | "error";
+type Status = "idle" | "sending" | "sent" | "error" | "cooldown" | "links";
+
+function readLastSent(): number {
+  try {
+    return Number(localStorage.getItem(LAST_SENT_KEY)) || 0;
+  } catch {
+    return 0;
+  }
+}
+
+function writeLastSent(now: number) {
+  try {
+    localStorage.setItem(LAST_SENT_KEY, String(now));
+  } catch {
+    // Storage blocked: the cooldown just doesn't persist across reloads.
+  }
+}
+
+const countLinks = (text: string) => (text.match(/https?:\/\/|www\./gi) ?? []).length;
 
 const field =
   "block w-full rounded-md border border-line bg-white/70 px-3.5 py-3 text-[15px] text-ink outline-none transition-colors focus:border-ink";
@@ -20,6 +43,7 @@ export function ContactForm() {
   const { t } = useLang();
   const c = t.pilot;
   const [status, setStatus] = useState<Status>("idle");
+  const shownAt = useRef(Date.now());
 
   if (!FACTS.contactFormKey) return <p className="m-0 text-mut">{c.offline}</p>;
 
@@ -34,7 +58,21 @@ export function ContactForm() {
   const submit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const data = new FormData(e.currentTarget);
-    if (data.get("botcheck")) return; // Honeypot filled in: silently drop bot submissions.
+    const now = Date.now();
+    const message = String(data.get("message") ?? "").trim();
+    // Bots fill hidden fields or submit instantly: pretend success so they don't retry.
+    if (data.get("botcheck") || data.get("website") || now - shownAt.current < MIN_FILL_MS) {
+      setStatus("sent");
+      return;
+    }
+    if (now - readLastSent() < COOLDOWN_MS) {
+      setStatus("cooldown");
+      return;
+    }
+    if (countLinks(message) > MAX_LINKS) {
+      setStatus("links");
+      return;
+    }
     setStatus("sending");
     try {
       const res = await fetch(ENDPOINT, {
@@ -45,11 +83,14 @@ export function ContactForm() {
           subject: c.subject,
           from_name: "Hado website",
           email: String(data.get("email") ?? "").trim(),
-          message: String(data.get("message") ?? "").trim(),
+          message,
+          botcheck: false,
         }),
       });
       const body = (await res.json().catch(() => null)) as { success?: boolean } | null;
-      setStatus(res.ok && body?.success ? "sent" : "error");
+      const ok = res.ok && body?.success === true;
+      if (ok) writeLastSent(now);
+      setStatus(ok ? "sent" : "error");
     } catch {
       setStatus("error");
     }
@@ -57,7 +98,7 @@ export function ContactForm() {
 
   const sending = status === "sending";
   return (
-    <form onSubmit={submit} className="grid gap-4">
+    <form onSubmit={submit} className="relative grid gap-4">
       <label className="grid gap-1.5 text-[14.5px] font-medium">
         {c.emailLabel}
         <input name="email" type="email" required maxLength={EMAIL_MAX} autoComplete="email" className={field} />
@@ -74,8 +115,16 @@ export function ContactForm() {
           className={`${field} resize-y`}
         />
       </label>
-      {/* Honeypot for bots: hidden from people and screen readers. */}
+      {/* Honeypots for bots: invisible to people and screen readers, but bots tend to fill every field. */}
       <input type="checkbox" name="botcheck" tabIndex={-1} autoComplete="off" aria-hidden="true" className="hidden" />
+      <input
+        type="text"
+        name="website"
+        tabIndex={-1}
+        autoComplete="off"
+        aria-hidden="true"
+        className="absolute -left-[9999px] h-px w-px opacity-0"
+      />
       <div className="flex flex-wrap items-center gap-4">
         <button
           type="submit"
@@ -84,9 +133,9 @@ export function ContactForm() {
         >
           {sending ? c.sending : c.send}
         </button>
-        {status === "error" && (
+        {(status === "error" || status === "cooldown" || status === "links") && (
           <p role="alert" className="m-0 text-[14.5px] text-sig">
-            {c.error}
+            {status === "cooldown" ? c.cooldown : status === "links" ? c.tooManyLinks : c.error}
           </p>
         )}
       </div>
