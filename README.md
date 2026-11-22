@@ -23,8 +23,10 @@ Or from the terminal: `npx vercel` (preview) and `npx vercel --prod`.
 
 ## Editing content
 
-- All figures and copy blocks (prices, test criteria, sites, benefits, team, FAQ, pilot contact email)
-  live in `src/content.ts`. Keep them in sync with the grant form and positioning.
+- All visible text is in `src/i18n/en.ts` (English) and `src/i18n/sk.ts` (Slovak). Both must have the same
+  shape; `npm run build` fails if a key is missing. The EN/SK switch is in the top menu; `?lang=sk` also works.
+- Numbers, names, photos and the pilot contact email are in `src/content.ts`.
+- Keep figures in sync with the grant form and positioning.
 - Colours and fonts are Tailwind theme tokens in `src/index.css` (`--color-ink`, `--color-sig`, ...).
 
 ## Structure

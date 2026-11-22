@@ -1,8 +1,7 @@
 import { useEffect, useRef, useState } from "react";
-import { FACTS } from "../content";
+import { STAT_VALUES } from "../content";
+import { useLang } from "../i18n";
 import { useInView } from "../lib/motion";
-
-const LINES = ["Keep the gloves on.", "Nothing to fog, crack or freeze.", "Every press signed by the glove that made it."];
 
 /** Statement that brightens as it scrolls into view. */
 function Reveal({ text, reduced }: { text: string; reduced: boolean }) {
@@ -35,12 +34,14 @@ function CountUp({
   pre = "",
   suf = "",
   decimals = 0,
+  locale,
   reduced,
 }: {
   to: number;
   pre?: string;
   suf?: string;
   decimals?: number;
+  locale: string;
   reduced: boolean;
 }) {
   const { ref, inView } = useInView<HTMLDivElement>(0.6);
@@ -63,49 +64,24 @@ function CountUp({
   return (
     <div ref={ref} className="display text-[clamp(44px,5.4vw,78px)] leading-none tracking-[-.03em] tabular-nums">
       {pre}
-      {value.toLocaleString("en-US", { minimumFractionDigits: decimals, maximumFractionDigits: decimals }).replace("-", "−")}
+      {value.toLocaleString(locale, { minimumFractionDigits: decimals, maximumFractionDigits: decimals }).replace("-", "−")}
       {suf}
     </div>
   );
 }
 
 export function Intro({ reduced }: { reduced: boolean }) {
-  const stats = [
-    {
-      to: FACTS.freezerC,
-      suf: " °C",
-      text: "Freezer warehouses, where operators wear thick insulated gloves and screens fog with condensation.",
-    },
-    {
-      to: FACTS.pcapGloveMm,
-      pre: "~",
-      suf: " mm",
-      text: "Roughly the glove thickness today's glove-mode touchscreens are specified for. Insulated gloves are thicker.",
-    },
-    {
-      to: FACTS.testErrorMm,
-      pre: "< ",
-      suf: " mm",
-      text: "Pass mark for our go/no-go test: mean touch error with no per-user calibration.",
-    },
-    {
-      to: FACTS.hmiMarketUsdB,
-      pre: "$",
-      suf: "B",
-      decimals: 1,
-      text: `Industrial HMI terminal market in 2025 (${FACTS.hmiMarketSource}).`,
-    },
-  ];
+  const { t } = useLang();
   return (
     <section className="py-[clamp(90px,13vw,180px)]">
       <div className="wrap">
-        {LINES.map((l) => (
+        {t.intro.lines.map((l) => (
           <Reveal key={l} text={l} reduced={reduced} />
         ))}
         <div className="mt-16 grid grid-cols-2 border-t border-ink md:grid-cols-4">
-          {stats.map((s, i) => (
+          {t.intro.stats.map((s, i) => (
             <div
-              key={s.text}
+              key={i}
               className={[
                 "pt-6.5 pr-6",
                 i % 2 === 1 ? "border-l border-line pl-6" : "",
@@ -113,7 +89,14 @@ export function Intro({ reduced }: { reduced: boolean }) {
                 i === 2 ? "md:border-l md:pl-6" : "",
               ].join(" ")}
             >
-              <CountUp to={s.to} pre={s.pre} suf={s.suf} decimals={s.decimals} reduced={reduced} />
+              <CountUp
+                to={STAT_VALUES[i].to}
+                decimals={STAT_VALUES[i].decimals}
+                pre={s.pre}
+                suf={s.suf}
+                locale={t.locale}
+                reduced={reduced}
+              />
               <p className="mt-2.5 mb-0 text-[14.5px] text-mut">{s.text}</p>
             </div>
           ))}

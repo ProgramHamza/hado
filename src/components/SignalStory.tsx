@@ -1,28 +1,9 @@
 import { useEffect, useRef } from "react";
+import { useLang } from "../i18n";
 import { clamp, hash, lerp, smoothstep as ss } from "../lib/motion";
 
 const INK = "13,27,46";
 const SIG = "255,90,31";
-
-const CAPTIONS = [
-  {
-    h: "The glove sends.",
-    p: "An insert sewn into the work glove emits a coded signal in a licence-free radio band.",
-  },
-  {
-    h: "The panel compares.",
-    p: "Each sensor at the edge of the sealed panel sees the signal slightly later and weaker. Phase and magnitude give the position. Move your pointer over the panel to press it yourself.",
-  },
-  {
-    h: "Frost and water do not matter.",
-    p: "In the cold and wet, a glass screen fogs and invents touches. The coded signal does not care how thick the glove is.",
-  },
-  {
-    h: "Every press has a name.",
-    p: "Each glove carries its own code, so the panel logs who pressed what. Move your pointer to press.",
-  },
-];
-const STEPS = ["Send", "Compare", "Cold & wet", "Identify"];
 
 type Ctx = CanvasRenderingContext2D;
 type Pt = [number, number];
@@ -70,6 +51,10 @@ export function SignalStory({ reduced }: { reduced: boolean }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const capRefs = useRef<(HTMLDivElement | null)[]>([]);
   const stepRefs = useRef<(HTMLSpanElement | null)[]>([]);
+  const { t } = useLang();
+  // The canvas loop reads labels through a ref, so switching language does not restart the animation.
+  const labelsRef = useRef(t.story.labels);
+  labelsRef.current = t.story.labels;
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -155,8 +140,8 @@ export function SignalStory({ reduced }: { reduced: boolean }) {
           c.lineTo(x - 8, y + 8);
           c.stroke();
         }
-        label(c, `Glass screen, false touches: ${ghosts}`, gx, gy + gh + 30, s3);
-        label(c, "Hado, false touches: 0", ox - 120 * sc * 1.4, oy + 110 * sc * 1.6 + 20, s3);
+        label(c, `${labelsRef.current.glassFalse} ${ghosts}`, gx, gy + gh + 30, s3);
+        label(c, labelsRef.current.hadoFalse, ox - 120 * sc * 1.4, oy + 110 * sc * 1.6 + 20, s3);
         c.strokeStyle = `rgba(${INK},${0.4 * s3})`;
         c.lineWidth = 1.6;
         for (let i = 0; i < 70; i++) {
@@ -246,8 +231,8 @@ export function SignalStory({ reduced }: { reduced: boolean }) {
       c.beginPath();
       c.arc(TX, TY, 8, 0, Math.PI * 2);
       c.fill();
-      label(c, glove > 0.5 ? "insulated glove" : "glove insert", rx + 34, ry + 4, fa);
-      label(c, "sensors", -318, -96, bz);
+      label(c, glove > 0.5 ? labelsRef.current.insulated : labelsRef.current.insert, rx + 34, ry + 4, fa);
+      label(c, labelsRef.current.sensors, -318, -96, bz);
 
       const so = ss(0.24, 0.3, p) * (1 - ss(0.48, 0.54, p));
       if (so > 0.01) {
@@ -271,7 +256,7 @@ export function SignalStory({ reduced }: { reduced: boolean }) {
           else c.lineTo(i, y2);
         }
         c.stroke();
-        label(c, `phase ${(((ph % (Math.PI * 2)) * 180) / Math.PI).toFixed(0)} deg, level ${(A * 100).toFixed(0)}%`, -300, 250, so, 16);
+        label(c, `${labelsRef.current.phase} ${(((ph % (Math.PI * 2)) * 180) / Math.PI).toFixed(0)}°, ${labelsRef.current.level} ${(A * 100).toFixed(0)} %`, -300, 250, so, 16);
       }
       c.restore();
 
@@ -305,7 +290,7 @@ export function SignalStory({ reduced }: { reduced: boolean }) {
         } else {
           trail(c, ink, a4);
         }
-        label(c, "Hado panel · press log: operator 07", x0, y0 - 12, a4);
+        label(c, labelsRef.current.panel, x0, y0 - 12, a4);
       }
 
       c.fillStyle = `rgb(${SIG})`;
@@ -358,11 +343,11 @@ export function SignalStory({ reduced }: { reduced: boolean }) {
         <canvas
           ref={canvasRef}
           className="block h-full w-full"
-          aria-label="Scroll animation of the Hado signal path"
+          aria-label={t.story.aria}
         />
-        {CAPTIONS.map((cap, i) => (
+        {t.story.captions.map((cap, i) => (
           <div
-            key={cap.h}
+            key={i}
             ref={(el) => {
               capRefs.current[i] = el;
             }}
@@ -373,9 +358,9 @@ export function SignalStory({ reduced }: { reduced: boolean }) {
           </div>
         ))}
         <div className="absolute right-7 bottom-7 left-7 flex max-w-[560px] gap-3.5">
-          {STEPS.map((s, i) => (
+          {t.story.steps.map((s, i) => (
             <span
-              key={s}
+              key={i}
               ref={(el) => {
                 stepRefs.current[i] = el;
               }}
