@@ -37,7 +37,7 @@ export type Person = {
 export const PEOPLE: Person[] = [
   { name: "Marek Hromada", initials: "MH", photo: "/team/marek.jpg", photoPosition: "55% 52%" },
   { name: "Adam Daniel Donoval", initials: "AD", photo: "/team/adam.jpg", photoPosition: "46% 28%" },
-  { name: "Teo Višňovský", initials: "TV" },
+  { name: "Teo Višňovský", initials: "TV", photo: "/team/teo.jpg", photoPosition: "50% 45%" },
 ];
 
 export const PROTOTYPE_PHOTO_SRC = "/prototype/proof-of-concept.jpg";
