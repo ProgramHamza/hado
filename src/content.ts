@@ -13,7 +13,7 @@ export const FACTS = {
    * Web3Forms access key for the pilot form. Public by design: it only delivers to the inbox it was
    * issued for and never reveals that address. Empty = the form shows a "not connected yet" note.
    */
-  contactFormKey: "",
+  contactFormKey: "da901edf-3f50-4c24-ae5c-fcf6beb0921f",
 } as const;
 
 /** Stats in the intro, in the same order as `intro.stats` in the copy files. */
