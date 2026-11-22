@@ -240,9 +240,9 @@ export const sk: Copy = {
     lead: "Malý tím z Bratislavy s koreňmi vo výskume robotiky. Hado vyvíja Cassava s. r. o.",
     members: [
       {
-        role: "CTO",
+        role: "Zakladateľ Hado, CTO",
         photoAlt: "Marek Hromada na MILSET ESE 2026 so svojím projektom bionickej ruky",
-        bio: "Vyvíja hardvér Hado, spracovanie signálu a algoritmy na rozpoznávanie dotyku.",
+        bio: "Prišiel s nápadom Hado a vyvíja ho: hardvér, spracovanie signálu a algoritmy na rozpoznávanie dotyku.",
         highlights: [
           "Víťaz FVaT AMAVET 2025 a 2026, slovenského festivalu vedy a techniky: postup na MILSET ESE 2026 a na ISEF 2027 ako jeden z dvoch slovenských finalistov",
           "Dvojnásobný víťaz Ceny Národného centra robotiky na FVaT AMAVET 2025 a 2026",
@@ -253,7 +253,7 @@ export const sk: Copy = {
         ],
       },
       {
-        role: "Spoluzakladateľ, CFO",
+        role: "CFO",
         photoAlt: "Adam Daniel Donoval",
         bio: "Spoluzakladateľ a konateľ spoločnosti Cassava s. r. o. Má na starosti financie, rozpočty, žiadosti o granty a rokovania s investormi.",
         highlights: [
@@ -264,7 +264,7 @@ export const sk: Copy = {
         ],
       },
       {
-        role: "Spoluzakladateľ, COO",
+        role: "COO",
         photoAlt: "Teo Višňovský",
         bio: "Spoluzakladateľ a konateľ spoločnosti Cassava s. r. o. Vedie prevádzku: pilotné projekty, dodávateľov a rozhovory so zákazníkmi z mraziarní a logistiky.",
         highlights: [

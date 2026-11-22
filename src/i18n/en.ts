@@ -230,9 +230,9 @@ export const en = {
     lead: "A small team from Bratislava, Slovakia, with roots in robotics research. Hado is developed by Cassava s. r. o.",
     members: [
       {
-        role: "CTO",
+        role: "Founder of Hado, CTO",
         photoAlt: "Marek Hromada at MILSET ESE 2026 with his bionic hand project",
-        bio: "Builds the Hado hardware, the signal processing and the touch-detection algorithms.",
+        bio: "Came up with Hado and builds it: the hardware, the signal processing and the touch-detection algorithms.",
         highlights: [
           "Winner of FVaT AMAVET 2025 and 2026, the Slovak science and engineering fair: advanced to MILSET ESE 2026 and qualified for ISEF 2027 as one of two Slovak finalists",
           "Two-time winner of the National Centre of Robotics Prize at FVaT AMAVET, 2025 and 2026",
@@ -243,7 +243,7 @@ export const en = {
         ],
       },
       {
-        role: "Co-founder, CFO",
+        role: "CFO",
         photoAlt: "Adam Daniel Donoval",
         bio: "Co-founder and managing director of Cassava s. r. o. Handles finance, budgets, grant applications and investor conversations.",
         highlights: [
@@ -254,7 +254,7 @@ export const en = {
         ],
       },
       {
-        role: "Co-founder, COO",
+        role: "COO",
         photoAlt: "Teo Višňovský",
         bio: "Co-founder and managing director of Cassava s. r. o. Runs operations: pilot sites, suppliers and customer discovery with cold stores and logistics sites.",
         highlights: [
